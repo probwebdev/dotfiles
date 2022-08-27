@@ -1,14 +1,3 @@
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# enable brew autocompletion for zsh
-export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
-
-# Added by Toolbox App
-export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
-
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
 
