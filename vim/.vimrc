@@ -1,7 +1,9 @@
 call plug#begin()
 
+Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
+Plug 'dbmrq/vim-redacted'
 
 call plug#end()
 
@@ -40,4 +42,5 @@ set showmode
 set showcmd
 
 "" Airline config
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
+let g:airline_theme='onedark'
