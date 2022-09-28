@@ -25,6 +25,13 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
+### tmux
+Tmux uses [**TPM**](https://github.com/tmux-plugins/tpm) manager. Quick install if missing:
+```text
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+By default `tmux` config is placed under `$HOME/.config/tmux/tmux.conf`.
+
 ### direnv
 Useful [**tool**](https://github.com/direnv/direnv) to manage env variables per project. Install with `brew install direnv` or:
 ```text
