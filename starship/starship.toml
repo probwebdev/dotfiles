@@ -3,7 +3,7 @@
 add_newline = true
 
 format = """
-[┌](green) $username$hostname
+[┌](green) $username$hostname$sudo
 [│](green) $directory\
 $git_status$git_branch$git_state\
 $nodejs$deno$bun$docker_context
@@ -27,6 +27,12 @@ disabled = false
 ssh_only = true
 format = "[@$hostname]($style)"
 style = "bold dimmed green"
+disabled = false
+
+[sudo]
+format = "[ $symbol]($style)"
+style = "bold yellow"
+symbol = "🗲"
 disabled = false
 
 [directory]
