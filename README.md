@@ -28,7 +28,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ### tmux
 Tmux uses [**TPM**](https://github.com/tmux-plugins/tpm) manager. Quick install if missing:
 ```text
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+mkdir -p ~/.config/tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
 By default `tmux` config is placed under `$HOME/.config/tmux/tmux.conf`.
 
