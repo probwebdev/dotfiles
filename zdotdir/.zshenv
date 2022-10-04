@@ -28,13 +28,14 @@ export LC_ALL="en_GB.UTF-8"
 export DOCKER_CONTENT_TRUST=0
 export EDITOR="$HOMEBREW_PREFIX/bin/nvim"
 export VISUAL="$HOMEBREW_PREFIX/bin/nvim"
+export DEFAULT_USER=$(whoami)
 
 # Volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 # ZIM
-export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+export ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"

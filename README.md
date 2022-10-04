@@ -8,7 +8,7 @@ Some configuration files. [**Homebrew**](https://brew.sh/) is considered install
 Shell env is powered by [**ZIM**](https://github.com/zimfw/zimfw).
 Quick install if missing:
 ```text
-curl -fsSL --create-dirs -o ~/.zim/zimfw.zsh \
+curl -fsSL --create-dirs -o ~/.zim/zimfw.zsh --create-dirs \
       https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
 ```
 ### Starship
@@ -27,13 +27,13 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
-Minimap plugin requires [**code-minimap**](https://github.com/wfxr/code-minimap)
+Minimap plugin requires [**code-minimap**](https://github.com/wfxr/code-minimap).
 
 ### tmux
 Tmux uses [**TPM**](https://github.com/tmux-plugins/tpm) manager. Quick install if missing:
 ```text
-mkdir -p ~/.config/tmux/plugins
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 By default `tmux` config is placed under `$HOME/.config/tmux/tmux.conf`.
 

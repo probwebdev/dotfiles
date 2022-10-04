@@ -1,7 +1,9 @@
 source $HOME/.zshenv
 source $HOME/.zprofile
 
-export DEFAULT_USER=$(whoami)
+# Private env
+#
+##
 
 # Launch Starship
 eval "$(starship init zsh)"
