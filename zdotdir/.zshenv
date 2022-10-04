@@ -26,8 +26,8 @@ export WORDCHARS=${WORDCHARS//[\/]}
 export TERM="xterm-256color"
 export LC_ALL="en_GB.UTF-8"
 export DOCKER_CONTENT_TRUST=0
-export EDITOR="$HOMEBREW_PREFIX/opt/vim"
-export VISUAL="$HOMEBREW_PREFIX/opt/vim"
+export EDITOR="$HOMEBREW_PREFIX/bin/nvim"
+export VISUAL="$HOMEBREW_PREFIX/bin/nvim"
 
 # Volta
 export VOLTA_HOME="$HOME/.volta"

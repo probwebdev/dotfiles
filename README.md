@@ -18,12 +18,16 @@ curl -sS https://starship.rs/install.sh | sh
 ```
 By default `starhip` config is placed under `$HOME/.config/starship.toml`.
 
-### vim
-Vim uses [**Vim Plug**](https://github.com/junegunn/vim-plug) manager. Quick install if missing:
+### Vim and NeoVim
+Vim/NeoVim uses [**Vim Plug**](https://github.com/junegunn/vim-plug) manager. Quick install if missing:
 ```text
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
+Minimap plugin requires [**code-minimap**](https://github.com/wfxr/code-minimap)
 
 ### tmux
 Tmux uses [**TPM**](https://github.com/tmux-plugins/tpm) manager. Quick install if missing:
