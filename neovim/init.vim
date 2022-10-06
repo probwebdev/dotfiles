@@ -3,7 +3,6 @@ call plug#begin()
 Plug 'wfxr/minimap.vim'
 Plug 'olimorris/onedarkpro.nvim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -50,11 +49,9 @@ set showmode
 set showcmd
 set cc=80
 set autoindent
-filetype plugin indent on
 set clipboard=unnamedplus
 set completeopt=menu,menuone,noselect
 
-syntax enable
 colorscheme onedarkpro
 
 lua << END
@@ -74,10 +71,8 @@ require('lualine').setup {
     }
   }
 }
-END
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   ensure_installed = {
     "astro",
     "bash",
@@ -123,4 +118,4 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
   },
 }
-EOF
+END
