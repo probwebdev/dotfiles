@@ -18,9 +18,7 @@ fi
 source ${ZIM_HOME}/init.zsh
 
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-#export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#586E75'
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-#export ZSH_HIGHLIGHT_STYLES[comment]='fg=#586E75'
 
 #
 # zsh-history-substring-search

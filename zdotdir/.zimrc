@@ -2,17 +2,6 @@
 # Plugins
 #
 
-#zmodule ohmyzsh/ohmyzsh --source oh-my-zsh.sh
-#zmodule ohmyzsh/ohmyzsh --source plugins/git/git.plugin.zsh
-#zmodule ohmyzsh/ohmyzsh --source plugins/npm/npm.plugin.zsh
-#zmodule ohmyzsh/ohmyzsh --source plugins/docker/docker.plugin.zsh
-#zmodule ohmyzsh/ohmyzsh --source plugins/docker-compose/docker-compose.plugin.zsh
-#zmodule ohmyzsh/ohmyzsh --source plugins/command-not-found/command-not-found.plugin.zsh
-#zmodule ohmyzsh/ohmyzsh --source plugins/direnv/direnv.plugin.zsh
-
-#zmodule sorin-ionescu/prezto --source init.zsh
-#zmodule sorin-ionescu/prezto --source modules/command-not-found/init.zsh
-
 zmodule agkozak/zsh-z
 
 #
