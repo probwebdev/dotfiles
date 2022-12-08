@@ -5,6 +5,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# enable firefox wayland when available
+if [[ "${XDG_SESSION_TYPE}" == "wayland" ]] ; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
 # Brew
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
 export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
