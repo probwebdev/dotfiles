@@ -52,7 +52,8 @@ set autoindent
 set clipboard=unnamedplus
 set completeopt=menu,menuone,noselect
 
-colorscheme onedarkpro
+colorscheme onedark
+set termguicolors
 
 lua << END
 require('lualine').setup {
