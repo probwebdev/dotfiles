@@ -37,3 +37,7 @@ export ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
