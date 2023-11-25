@@ -18,6 +18,14 @@ curl -sS https://starship.rs/install.sh | sh
 ```
 By default `starhip` config is placed under `$HOME/.config/starship.toml`.
 
+### Proto
+Install toolchain manager [**Proto**](https://moonrepo.dev/proto):
+```text
+curl -fsSL https://moonrepo.dev/install/proto.sh | bash
+```
+To generate completions use `proto completions > ~/.proto/_proto`.
+
+
 ### Vim and NeoVim
 Vim/NeoVim uses [**Vim Plug**](https://github.com/junegunn/vim-plug) manager. Quick install if missing:
 ```text

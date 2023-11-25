@@ -28,10 +28,6 @@ export EDITOR="$HOMEBREW_PREFIX/bin/nvim"
 export VISUAL="$HOMEBREW_PREFIX/bin/nvim"
 export DEFAULT_USER=$(whoami)
 
-# Volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 # ZIM
 export ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
 
@@ -41,3 +37,7 @@ export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# proto
+export PROTO_HOME="$HOME/.proto"
+export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
