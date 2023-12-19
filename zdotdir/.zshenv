@@ -5,11 +5,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# enable firefox wayland when available
-if [[ "${XDG_SESSION_TYPE}" == "wayland" ]] ; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
-
 # Brew
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
 export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
@@ -33,6 +28,10 @@ export ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+# go
+export GOBIN="$HOME/go/bin"
+export PATH="$GOBIN:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
