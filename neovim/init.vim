@@ -1,10 +1,10 @@
 call plug#begin()
 
-Plug 'wfxr/minimap.vim'
+Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'olimorris/onedarkpro.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
 call plug#end()
 
@@ -53,6 +53,7 @@ set clipboard=unnamedplus
 set completeopt=menu,menuone,noselect
 
 colorscheme onedark
+
 set termguicolors
 
 lua << END

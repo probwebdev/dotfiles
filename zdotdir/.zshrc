@@ -5,4 +5,3 @@ source $HOME/.zprofile
 
 # Launch Starship
 eval "$(starship init zsh)"
-
