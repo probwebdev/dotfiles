@@ -1,7 +1,7 @@
 # dotfiles
 
 Environment configuration files.   
-[**Homebrew**](https://brew.sh/) is considered optional. On Fedora it's better to use built-in package manager instead.
+[**Homebrew**](https://brew.sh/) is considered optional and configuration should be sourced manually. On Fedora it's better to use built-in package manager instead.
 
 ## Prerequisites
 
