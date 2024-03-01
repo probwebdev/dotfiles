@@ -1,19 +1,9 @@
 skip_global_compinit=1
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [[ -d "$HOME/.local/bin" ]] ; then
+    export PATH="$HOME/.local/bin:$PATH"
 fi
-
-# Brew/Linuxbrew
-#export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-#export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar";
-#export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/Homebrew";
-#export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin${PATH+:$PATH}";
-#export MANPATH="$HOMEBREW_PREFIX/share/man${MANPATH+:$MANPATH}:";
-#export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}";
-#export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
-#export HOMEBREW_NO_CLEANUP_FORMULAE=starship
 
 # User configuration
 export WORDCHARS=${WORDCHARS//[\/]}

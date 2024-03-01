@@ -3,6 +3,8 @@ call plug#begin()
 Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
 Plug 'olimorris/onedarkpro.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'junegunn/fzf.vim'
+Plug 'nanotee/zoxide.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
