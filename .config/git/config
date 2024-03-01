@@ -1,0 +1,26 @@
+[core]
+	autocrlf = input
+	quotepath = false
+	editor = nvim
+	pager = delta
+[commit]
+	gpgsign = true
+[protocol]
+	version = 2
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  light = false
+  line-numbers = true
+  side-by-side = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default

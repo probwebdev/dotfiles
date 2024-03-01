@@ -17,9 +17,6 @@ fi
 
 source ${ZIM_HOME}/init.zsh
 
-export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
 #
 # zsh-history-substring-search
 #
@@ -37,8 +34,11 @@ unset key
 # uninstall by removing these lines
 [[ -f $HOME/.config/tabtab/zsh/__tabtab.zsh ]] && . $HOME/.config/tabtab/zsh/__tabtab.zsh || true
 
+# fzf completions
+[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
+
 # bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+[[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
 
 # proto completions
-[ -s "$HOME/.proto/_proto" ] && source "$HOME/.proto/_proto"
+[[ -s "$HOME/.proto/_proto" ]] && source "$HOME/.proto/_proto"

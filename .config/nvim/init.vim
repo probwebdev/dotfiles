@@ -55,7 +55,6 @@ set clipboard=unnamedplus
 set completeopt=menu,menuone,noselect
 
 colorscheme onedark
-
 set termguicolors
 
 lua << END
