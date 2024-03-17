@@ -20,7 +20,7 @@ zmodule fzf
 # Completion
 #
 
-#zmodule zsh-users/zsh-completions --fpath src
+zmodule zsh-users/zsh-completions --fpath src
 zmodule completion
 
 #
