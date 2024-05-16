@@ -1,10 +1,5 @@
 skip_global_compinit=1
 
-# set PATH so it includes user's private bin if it exists
-if [[ -d "$HOME/.local/bin" ]] ; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
 # User configuration
 export WORDCHARS=${WORDCHARS//[\/]}
 export TERM="xterm-256color"
@@ -27,6 +22,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # ZIM
 export ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
 
+# set PATH so it includes user's private bin if it exists
+if [[ -d "$HOME/.local/bin" ]] ; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
@@ -34,8 +34,9 @@ export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 # go
-if [[ -d "$HOME/go/bin" ]] ; then
-    export GOBIN="$HOME/go/bin"
+if [[ -d "$HOME/.go" ]] ; then
+    export GOPATH="$HOME/.go"
+    export GOBIN="$GOPATH/bin"
     export PATH="$GOBIN:$PATH"
 fi
 

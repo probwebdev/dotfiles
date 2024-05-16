@@ -57,4 +57,5 @@ cd dotfiles
 stow .
 ```
 
-Look for existing files and either remove them or move to a backup folder. Alternatively run `stow --adopt .` to adopt existing configuration files.
+Look for existing files and either remove them or move to a backup folder. Alternatively run `stow --adopt .` to adopt existing configuration files.   
+To stow new files run this from dotfiles `stow --restow .`
