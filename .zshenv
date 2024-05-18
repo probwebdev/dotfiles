@@ -27,6 +27,11 @@ if [[ -d "$HOME/.local/bin" ]] ; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# forgit
+if [[ ! -z "${FORGIT_INSTALL_DIR}" ]]; then
+  export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
+fi
+
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
