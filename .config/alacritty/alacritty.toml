@@ -1,0 +1,15 @@
+import = [
+  "~/.config/alacritty/theme.toml",
+]
+
+[window]
+dimensions = { columns = 112, lines = 30 }
+padding = { x = 8, y = 8 }
+decorations_theme_variant = "Dark"
+resize_increments = true
+
+[font]
+size = 12.00
+
+[cursor]
+style = { blinking = "On" }

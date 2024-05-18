@@ -3,8 +3,8 @@
 .idea
 .vscode
 .editorconfig
-iterm
-jetbrains
+apps
 zcustom
+dprint.json
 README.md
 LICENSE

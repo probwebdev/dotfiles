@@ -1,0 +1,25 @@
+{
+    "name": "One Dark Pro",
+    "comment": "Custom One Dark Colour Scheme",
+    "use-theme-colors": false,
+    "foreground-color": "#abb2bf",
+    "background-color": "#282c34",
+    "palette": [
+      "#000000",
+      "#e06c75",
+      "#98c379",
+      "#e5c07b",
+      "#61aeee",
+      "#c678dd",
+      "#56b6c2",
+      "#abb2bf",
+      "#5c6370",
+      "#e06c75",
+      "#98c379",
+      "#d19a66",
+      "#62afee",
+      "#c678dd",
+      "#56b6c2",
+      "#ffffff"
+    ]
+}
