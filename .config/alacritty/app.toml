@@ -4,5 +4,10 @@ padding = { x = 8, y = 8 }
 decorations_theme_variant = "Dark"
 resize_increments = true
 
+[font]
+normal = { family = "Source Code Pro", style = "Medium" }
+bold = { style = "Semibold" }
+bold_italic = { style = "Semibold Italic" }
+
 [cursor]
 style = { blinking = "On" }
