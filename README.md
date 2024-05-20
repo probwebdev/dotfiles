@@ -14,7 +14,7 @@ Fedora
 ```shell
 # shell tools
 dnf copr enable atim/starship
-dnf install starship stow zoxide fzf fd-find git-delta tmux neovim direnv
+dnf install alacritty starship stow zoxide fzf fd-find git-delta tmux neovim direnv
 
 # zimfw
 curl -fsSL --create-dirs -o ~/.zim/zimfw.zsh --create-dirs \
@@ -37,6 +37,7 @@ curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --c
 
 List of shell tools:
 
+- [**alacritty**](https://github.com/alacritty/alacritty)
 - [**starship**](https://github.com/starship/starship)
 - [**zimfw**](https://github.com/zimfw/zimfw)
 - [**proto**](https://moonrepo.dev/proto)
