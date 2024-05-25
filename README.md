@@ -14,7 +14,7 @@ Fedora
 ```shell
 # shell tools
 dnf copr enable atim/starship
-dnf install alacritty starship stow zoxide fzf fd-find git-delta tmux neovim direnv
+dnf install alacritty starship stow zoxide fzf fd-find bat eza git-delta tmux neovim direnv
 
 # zimfw
 curl -fsSL --create-dirs -o ~/.zim/zimfw.zsh --create-dirs \
@@ -44,6 +44,8 @@ List of shell tools:
 - [**zoxide**](https://github.com/ajeetdsouza/zoxide)
 - [**fzf**](https://github.com/junegunn/fzf)
 - [**fd**](https://github.com/sharkdp/fd)
+- [**eza**](https://github.com/eza-community/eza)
+- [**bat**](https://github.com/sharkdp/bat)
 - [**delta**](https://github.com/dandavison/delta)
 - [**vim-plug**](https://github.com/junegunn/vim-plug)
 - [**direnv**](https://github.com/direnv/direnv)

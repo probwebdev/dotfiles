@@ -16,6 +16,18 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# If you're using Homebrew, you'll want this enabled
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export HOMEBREW_NO_CLEANUP_FORMULAE=starship
+fi
+
+# If you're using Linuxbrew, you'll want this enabled
+if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  export HOMEBREW_NO_CLEANUP_FORMULAE=starship
+fi
+
 # Private env
 [[ -s "$HOME/.zshenv-custom" ]] && source "$HOME/.zshenv-custom"
 

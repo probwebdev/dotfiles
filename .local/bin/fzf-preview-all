@@ -1,0 +1,8 @@
+#!/bin/bash
+if test -d "$@"; then
+    eza --tree --level=2 --color=always --git "$@" | head -200
+elif test -f "$@"; then
+    bat -n --color=always "$@"
+else
+  "$@"
+fi

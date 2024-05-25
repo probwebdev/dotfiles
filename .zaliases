@@ -1,3 +1,5 @@
+alias list="eza -l -o -a --git --level=1 --header"
+
 # TPM aliases
 alias tpmi="~/.tmux/plugins/tpm/bin/install_plugins"
 alias tpmup="~/.tmux/plugins/tpm/bin/update_plugins all"

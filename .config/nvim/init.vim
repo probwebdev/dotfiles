@@ -5,6 +5,7 @@ Plug 'olimorris/onedarkpro.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'junegunn/fzf.vim'
 Plug 'nanotee/zoxide.vim'
+Plug 'm4xshen/autoclose.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
@@ -58,6 +59,8 @@ colorscheme onedark
 set termguicolors
 
 lua << END
+require("autoclose").setup()
+
 require('lualine').setup {
   sections = {
     lualine_x = {

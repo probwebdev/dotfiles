@@ -1,3 +1,6 @@
+[include]
+  path = ~/.config/delta/themes.gitconfig
+
 [core]
 	autocrlf = input
 	quotepath = false
@@ -16,7 +19,9 @@
 [interactive]
   diffFilter = delta --color-only
 [delta]
+  features = mellow-barbet
   navigate = true
+  dark = true
   light = false
   line-numbers = true
   side-by-side = true
