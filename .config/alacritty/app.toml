@@ -8,9 +8,9 @@ decorations_theme_variant = "Dark"
 resize_increments = true
 
 [font]
-normal = { family = "Source Code Pro", style = "Medium" }
-bold = { style = "Semibold" }
-bold_italic = { style = "Semibold Italic" }
+normal = { family = "Iosevka Term", style = "Medium Extended" }
+bold = { style = "Bold Extended" }
+bold_italic = { style = "Bold Extended Italic" }
 
 [cursor]
 style = { blinking = "On" }
