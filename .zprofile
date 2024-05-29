@@ -40,7 +40,6 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
 fi
 
 source ${ZIM_HOME}/init.zsh
-source ${HOME}/.zsh/fzf-preview.zsh
 
 #
 # zsh-history-substring-search
@@ -54,16 +53,18 @@ for key ('k') bindkey -M vicmd ${key} history-substring-search-up
 for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 
-# PNPM autocomplete
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f $HOME/.config/tabtab/zsh/__tabtab.zsh ]] && . $HOME/.config/tabtab/zsh/__tabtab.zsh || true
+# Create zsh data dir if missing
+if [[ ! -d $USER_ZSH_COMPLETIONS ]]; then
+  mkdir -p $USER_ZSH_COMPLETIONS
+fi
 
-# fzf completions
-[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
+[[ -s "$USER_ZSH_DATA/fzf-preview.zsh" ]] && source $USER_ZSH_DATA/fzf-preview.zsh
+
+# pnpm completions
+[[ -s "$USER_ZSH_COMPLETIONS/_pnpm" ]] && source "$USER_ZSH_COMPLETIONS/_pnpm"
 
 # bun completions
-[[ -s "$HOME/.bun/_bun" ]] && source "$HOME/.bun/_bun"
+[[ -s "$USER_ZSH_COMPLETIONS/_bun" ]] && source "$USER_ZSH_COMPLETIONS/_bun"
 
 # proto completions
-[[ -s "$HOME/.proto/_proto" ]] && source "$HOME/.proto/_proto"
+[[ -s "$USER_ZSH_COMPLETIONS/_proto" ]] && source "$USER_ZSH_COMPLETIONS/_proto"

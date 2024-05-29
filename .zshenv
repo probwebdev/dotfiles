@@ -9,6 +9,8 @@ export VISUAL="nvim"
 export DEFAULT_USER=$(whoami)
 export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
+export USER_ZSH_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
+export USER_ZSH_COMPLETIONS="$USER_ZSH_DATA/completions.d"
 
 # Tools
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
@@ -55,12 +57,6 @@ if [[ -d "$HOME/.go" ]] ; then
     export GOPATH="$HOME/.go"
     export GOBIN="$GOPATH/bin"
     export PATH="$GOBIN:$PATH"
-fi
-
-# bun
-if [[ -d "$HOME/.bun" ]] ; then
-    export BUN_INSTALL="$HOME/.bun"
-    export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 
 # proto
