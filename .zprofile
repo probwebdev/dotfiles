@@ -17,17 +17,6 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
-# Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':completion:*:git-checkout:*' sort false
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:*' switch-group '<' '>'
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --tree --level=2 --color=always --git $realpath | head -200'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --tree --level=2 --color=always --git $realpath | head -200'
-zstyle ':fzf-tab:complete:nvim:*' fzf-preview 'fzf-preview-all $realpath'
-
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
@@ -57,7 +46,9 @@ unset key
 if [[ ! -d $USER_ZSH_COMPLETIONS ]]; then
   mkdir -p $USER_ZSH_COMPLETIONS
 fi
-
+# Completion styling
+[[ -s "$USER_ZSH_DATA/zstyle.zsh" ]] && source $USER_ZSH_DATA/zstyle.zsh
+# FZF preview
 [[ -s "$USER_ZSH_DATA/fzf-preview.zsh" ]] && source $USER_ZSH_DATA/fzf-preview.zsh
 
 # pnpm completions

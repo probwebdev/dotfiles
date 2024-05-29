@@ -13,10 +13,14 @@ export USER_ZSH_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
 export USER_ZSH_COMPLETIONS="$USER_ZSH_DATA/completions.d"
 
 # Tools
+export LESSOPEN='|fzf-preview-all %s'
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height=85%'
+export FZF_TMUX_OPTS='-p 85%'
+export FZF_COMPLETION_TRIGGER='~~'
 
 # If you're using Homebrew, you'll want this enabled
 if [[ -f "/opt/homebrew/bin/brew" ]]; then

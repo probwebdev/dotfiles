@@ -15,6 +15,8 @@ Fedora
 # shell tools
 dnf copr enable atim/starship
 dnf install alacritty starship stow zoxide fzf fd-find bat eza git-delta tmux neovim direnv
+# Homebrew (optional)
+brew install alacritty starship stow zoxide fzf fd-find bat eza git-delta tmux neovim direnv tlrc lesspipe
 
 # zimfw
 curl -fsSL --create-dirs -o ~/.zim/zimfw.zsh --create-dirs \

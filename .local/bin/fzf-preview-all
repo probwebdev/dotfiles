@@ -1,8 +1,11 @@
-#!/bin/bash
-if test -d "$@"; then
-    eza --tree --level=2 --color=always --git "$@" | head -200
-elif test -f "$@"; then
-    bat -n --color=always "$@"
+#! /usr/bin/env sh
+mime=$(file -bL --mime-type "$1")
+category=${mime%%/*}
+if [[ -d "$1" ]]; then
+	eza --tree --level=2 --color=always --git "$1" | head -200
 else
-  "$@"
+  case $category in
+      text|application) bat -n --color=always "$1" ;;
+      *) lesspipe.sh "$1" | bat -n --color=always ;;
+  esac
 fi
