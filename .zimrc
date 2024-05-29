@@ -3,8 +3,6 @@
 #
 
 zmodule Aloxaf/fzf-tab
-zmodule wfxr/forgit
-zmodule wfxr/forgit --fpath completions
 
 #
 # Modules

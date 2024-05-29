@@ -36,15 +36,11 @@ fi
 # ZIM
 export ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
 
-# set PATH so it includes user's private bin if it exists
-if [[ -d "$HOME/.local/bin" ]] ; then
-    export PATH="$HOME/.local/bin:$PATH"
+# set PATH so it includes user's private bin
+if [[ ! -d "$HOME/.local/bin" ]] ; then
+    mkdir -p $HOME/.local/bin
 fi
-
-# forgit
-if [[ ! -z "${FORGIT_INSTALL_DIR}" ]]; then
-  export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
-fi
+export PATH="$HOME/.local/bin:$PATH"
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
