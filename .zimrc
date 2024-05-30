@@ -19,6 +19,7 @@ zmodule fzf
 #
 
 zmodule zsh-users/zsh-completions --fpath src
+zmodule tldr-pages/tlrc --fpath completions
 zmodule completion
 
 #

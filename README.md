@@ -47,6 +47,7 @@ List of shell tools:
 - [**eza**](https://github.com/eza-community/eza)
 - [**bat**](https://github.com/sharkdp/bat)
 - [**delta**](https://github.com/dandavison/delta)
+- [**tldr**](https://github.com/tldr-pages/tlrc)
 - [**vim-plug**](https://github.com/junegunn/vim-plug)
 - [**direnv**](https://github.com/direnv/direnv)
 
