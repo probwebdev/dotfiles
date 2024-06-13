@@ -18,8 +18,7 @@ export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--height=85%'
-export FZF_TMUX_OPTS='-p 85%'
+export FZF_DEFAULT_OPTS="--height=85% --tmux=85% --preview-window='right:60%:wrap,<50(up:55%:wrap)'"
 export FZF_COMPLETION_TRIGGER='~~'
 
 # If you're using Homebrew, you'll want this enabled

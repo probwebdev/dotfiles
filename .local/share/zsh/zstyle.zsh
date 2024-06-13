@@ -8,11 +8,12 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' show-group none
 
 # Preview defaults
-zstyle ':fzf-tab:*' fzf-command fzf-tmux
+## default fzf command
+#zstyle ':fzf-tab:*' fzf-command fzf
 ## style to preview everything
 #zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 ## adopt fzf preview window based on terminal size
-zstyle ':fzf-tab:complete:*:*' fzf-flags --height=85% $FZF_DEFAULT_OPTS --preview-window='right:60%:wrap,<50(up:55%:wrap)'
+zstyle ':fzf-tab:complete:*:*' fzf-flags --height=85% --tmux=85% --preview-window='right:60%:wrap,<50(up:55%:wrap)'
 zstyle ':fzf-tab:complete:*:options' fzf-preview
 zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
 
@@ -27,7 +28,7 @@ zstyle ':fzf-tab:complete:(nvim|vim|nano|less|more):*' fzf-preview 'fzf-preview-
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
   '[[ $group == "[process ID]" ]] && ps --pid=$word -o cmd --no-headers -w -w'
-zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags $FZF_DEFAULT_OPTS --preview-window=down:3:wrap
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
 
 # Preview systemd status
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'

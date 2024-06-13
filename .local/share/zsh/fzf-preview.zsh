@@ -11,13 +11,9 @@ _fzf_comprun() {
   shift
 
   case "$command" in
-    cd)           fzf-tmux --preview 'eza --tree --level=2 --color=always --git {} | head -200' "$@" ;;
-    export|unset) fzf-tmux --preview "eval 'echo \$'{}" "$@" ;;
-    ssh)          fzf-tmux --preview 'dig {}' "$@" ;;
-    *)            fzf-tmux --preview 'less {}' "$@" ;;
+    cd)           fzf --preview 'eza --tree --level=2 --color=always --git {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}" "$@" ;;
+    ssh)          fzf --preview 'dig {}' "$@" ;;
+    *)            fzf --preview 'less {}' "$@" ;;
   esac
-}
-
-fzf-tmux() {
-  command fzf-tmux $FZF_TMUX_OPTS "$@"
 }
