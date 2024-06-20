@@ -2,8 +2,6 @@
 # Plugins
 #
 
-zmodule Aloxaf/fzf-tab
-
 #
 # Modules
 #
@@ -12,7 +10,6 @@ zmodule environment
 zmodule input
 zmodule utility
 zmodule termtitle
-zmodule fzf
 
 #
 # Completion
@@ -26,6 +23,7 @@ zmodule completion
 # Modules that must be initialized last
 #
 
+zmodule Aloxaf/fzf-tab
 zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions

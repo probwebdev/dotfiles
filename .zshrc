@@ -6,7 +6,7 @@ source $HOME/.zaliases
 eval "$(starship init zsh)"
 
 # Launch FZF (requires >=0.48.0)
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 
 # Launch zoxide
 eval "$(zoxide init zsh)"
