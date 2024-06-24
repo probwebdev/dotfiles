@@ -10,7 +10,7 @@ export DEFAULT_USER=$(whoami)
 export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 export USER_ZSH_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
-export USER_ZSH_COMPLETIONS="$USER_ZSH_DATA/completions.d"
+export USER_ZSH_SITE_FUNCTIONS="$USER_ZSH_DATA/site-functions"
 
 # Tools
 export LESSOPEN='|fzf-preview-all %s'

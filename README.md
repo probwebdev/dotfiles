@@ -65,3 +65,7 @@ stow .
 
 Look for existing files and either remove them or move to a backup folder. Alternatively run `stow --adopt .` to adopt existing configuration files.   
 To stow new files run this from dotfiles `stow --restow .`
+
+## User zsh completions
+It's possible to automatically load custom completions from `USER_ZSH_SITE_FUNCTIONS`(e.g `~/.local/share/zsh/site-functions`).   
+Simply add your completion files to the dir or generate it with your tool e.g `proto completions > ~/.local/share/zsh/site-functions/_proto` and reload terminal session.

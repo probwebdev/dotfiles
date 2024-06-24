@@ -43,19 +43,10 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 
 # Create zsh data dir if missing
-if [[ ! -d $USER_ZSH_COMPLETIONS ]]; then
-  mkdir -p $USER_ZSH_COMPLETIONS
+if [[ ! -d $USER_ZSH_SITE_FUNCTIONS ]]; then
+  mkdir -p $USER_ZSH_SITE_FUNCTIONS
 fi
 # Completion styling
 [[ -s "$USER_ZSH_DATA/zstyle.zsh" ]] && source $USER_ZSH_DATA/zstyle.zsh
 # FZF preview
 [[ -s "$USER_ZSH_DATA/fzf-preview.zsh" ]] && source $USER_ZSH_DATA/fzf-preview.zsh
-
-# pnpm completions
-[[ -s "$USER_ZSH_COMPLETIONS/_pnpm" ]] && source "$USER_ZSH_COMPLETIONS/_pnpm"
-
-# bun completions
-[[ -s "$USER_ZSH_COMPLETIONS/_bun" ]] && source "$USER_ZSH_COMPLETIONS/_bun"
-
-# proto completions
-[[ -s "$USER_ZSH_COMPLETIONS/_proto" ]] && source "$USER_ZSH_COMPLETIONS/_proto"
