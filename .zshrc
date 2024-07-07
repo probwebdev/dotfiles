@@ -2,11 +2,14 @@ source $HOME/.zshenv
 source $HOME/.zprofile
 source $HOME/.zaliases
 
-# Launch Starship
+# Initialize Starship
 eval "$(starship init zsh)"
 
-# Launch FZF (requires >=0.48.0)
+# Initialize FZF (requires >=fzf@0.48.0)
 source <(fzf --zsh)
 
-# Launch zoxide
+# Initialize zoxide
 eval "$(zoxide init zsh)"
+
+# Activate proto (requires >=proto@0.38.0)
+eval "$(proto activate zsh)"

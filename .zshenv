@@ -33,9 +33,6 @@ if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
   export HOMEBREW_NO_CLEANUP_FORMULAE=starship
 fi
 
-# Private env
-[[ -s "$HOME/.zshenv-custom" ]] && source "$HOME/.zshenv-custom"
-
 # ZIM
 export ZIM_HOME=${ZDOTDIR:-$HOME}/.zim
 
@@ -47,6 +44,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+# Private env
+[[ -s "$HOME/.zshenv-custom" ]] && source "$HOME/.zshenv-custom"
 
 # rust
 [[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"

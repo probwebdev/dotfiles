@@ -21,6 +21,11 @@ fi
 # FZF preview
 [[ -s "$USER_ZSH_DATA/fzf-preview.zsh" ]] && source $USER_ZSH_DATA/fzf-preview.zsh
 
+# Download proto manager if missing.
+if [[ ! -e ${HOME}/.proto ]]; then
+  curl -fsSL https://moonrepo.dev/install/proto.sh | bash
+fi
+
 # Download zimfw plugin manager if missing.
 if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
   curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \

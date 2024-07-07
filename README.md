@@ -24,7 +24,7 @@ curl -fsSL --create-dirs -o ~/.zim/zimfw.zsh --create-dirs \
 
 # proto
 curl -fsSL https://moonrepo.dev/install/proto.sh | bash
-proto completions > ~/.proto/_proto
+proto completions >| ${USER_ZSH_SITE_FUNCTIONS}/_proto
 
 # tmux
 mkdir -p ~/.tmux/plugins
