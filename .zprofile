@@ -1,25 +1,7 @@
-zmodload -F zsh/terminfo +p:terminfo
-
-# History
-HISTSIZE=5000
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
 # Create zsh data dir if missing
 if [[ ! -d $USER_ZSH_SITE_FUNCTIONS ]]; then
   mkdir -p $USER_ZSH_SITE_FUNCTIONS
 fi
-# Completion styling
-[[ -s "$USER_ZSH_DATA/zstyle.zsh" ]] && source $USER_ZSH_DATA/zstyle.zsh
-# FZF preview
-[[ -s "$USER_ZSH_DATA/fzf-preview.zsh" ]] && source $USER_ZSH_DATA/fzf-preview.zsh
 
 # Download proto manager if missing.
 if [[ ! -e ${HOME}/.proto ]]; then
@@ -37,22 +19,32 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 
-source ${ZIM_HOME}/init.zsh
+# If you're using Homebrew, you'll want this enabled
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
-# Keybindings
-# Set editor default keymap to emacs (`-e`) or vi (`-v`)
-bindkey -v
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
+# If you're using Linuxbrew, you'll want this enabled
+if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
-#
-# zsh-history-substring-search
-#
+# set PATH so it includes user's private bin
+if [[ ! -d "$HOME/.local/bin" ]] ; then
+    mkdir -p $HOME/.local/bin
+fi
+export PATH="$HOME/.local/bin:$PATH"
 
-# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
-for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-for key ('k') bindkey -M vicmd ${key} history-substring-search-up
-for key ('j') bindkey -M vicmd ${key} history-substring-search-down
-unset key
+# Added by Toolbox App
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+# rust
+[[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+# go
+if [[ -d "$HOME/.go/bin" ]] ; then
+    export PATH="$GOBIN:$PATH"
+fi
+
+# Proto
+export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
