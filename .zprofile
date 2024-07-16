@@ -34,11 +34,6 @@ fi
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 # If you're using Homebrew, you'll want this enabled
-if [[ -f "/opt/homebrew/bin/brew" ]]; then
+if [[ "$OSTYPE" == "darwin"* && -f "/opt/homebrew/bin/brew" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-# If you're using Linuxbrew, you'll want this enabled
-if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
