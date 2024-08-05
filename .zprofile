@@ -25,10 +25,8 @@ if [[ ! -d "$USER_BIN_HOME" ]] ; then
 fi
 export PATH="$USER_BIN_HOME:$PATH"
 
-# link proto to user's private bin
-if [[ ! -e "$USER_BIN_HOME/proto" ]]; then
-  ln -s "$PROTO_HOME/bin/proto" "$USER_BIN_HOME/proto"
-fi
+# Add proto bins and shims to PATH
+export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"

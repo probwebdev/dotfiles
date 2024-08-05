@@ -64,7 +64,7 @@ source $HOME/.zaliases
 source ${ZIM_HOME}/init.zsh
 
 # Activate proto (requires >=proto@0.38.0)
-eval "$(proto activate zsh)"
+eval "$(proto activate zsh --no-bin --no-shim)"
 
 # Initialize FZF (requires >=fzf@0.48.0)
 source <(fzf --zsh)
