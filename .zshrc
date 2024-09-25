@@ -10,8 +10,8 @@ export DEFAULT_USER=$(whoami)
 export GPG_TTY=$(tty)
 export LANG=en_US.UTF-8
 
-# Private env
-[[ -s "$HOME/.zshenv-custom" ]] && source "$HOME/.zshenv-custom"
+# Private zsh configuration
+[[ -s "$HOME/.zshrc-private" ]] && source "$HOME/.zshrc-private"
 
 # Tools
 export LESSOPEN='|fzf-preview-all %s'
