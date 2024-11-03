@@ -17,41 +17,7 @@ dnf copr enable atim/starship
 dnf install alacritty starship stow zoxide fzf fd-find bat eza git-delta tmux neovim direnv
 # Homebrew (optional)
 brew install alacritty starship stow zoxide fzf fd-find bat eza git-delta tmux neovim direnv tlrc lesspipe
-
-# zimfw
-curl -fsSL --create-dirs -o ~/.zim/zimfw.zsh --create-dirs \
-      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-
-# proto
-curl -fsSL https://moonrepo.dev/install/proto.sh | bash
-proto completions >| ${USER_ZSH_SITE_FUNCTIONS}/_proto
-
-# tmux
-mkdir -p ~/.tmux/plugins
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# vim plug
-curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-
-### Shell tools
-
-List of shell tools:
-
-- [**alacritty**](https://github.com/alacritty/alacritty)
-- [**starship**](https://github.com/starship/starship)
-- [**zimfw**](https://github.com/zimfw/zimfw)
-- [**proto**](https://moonrepo.dev/proto)
-- [**zoxide**](https://github.com/ajeetdsouza/zoxide)
-- [**fzf**](https://github.com/junegunn/fzf)
-- [**fd**](https://github.com/sharkdp/fd)
-- [**eza**](https://github.com/eza-community/eza)
-- [**bat**](https://github.com/sharkdp/bat)
-- [**delta**](https://github.com/dandavison/delta)
-- [**tldr**](https://github.com/tldr-pages/tlrc)
-- [**vim-plug**](https://github.com/junegunn/vim-plug)
-- [**direnv**](https://github.com/direnv/direnv)
 
 ## Use dotfiles
 
