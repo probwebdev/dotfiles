@@ -4,6 +4,7 @@
 .vscode
 .editorconfig
 apps
+result
 dprint.json
 README.md
 LICENSE
