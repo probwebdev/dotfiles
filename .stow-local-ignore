@@ -3,6 +3,7 @@
 .idea
 .vscode
 .editorconfig
+.DS_Store
 apps
 result
 dprint.json
