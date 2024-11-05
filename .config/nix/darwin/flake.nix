@@ -3,17 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nix-homebrew, nixpkgs }:
   let
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs;
       [
+        alacritty
+        gnupg
         git
         stow
         neovim
@@ -29,6 +32,22 @@
         tlrc
         lesspipe
       ];
+
+      homebrew = {
+        enable = true;
+        brews = [
+          "pinentry-mac"
+        ];
+        casks = [
+          "jetbrains-toolbox"
+          "firefox"
+          "discord"
+          "telegram"
+          "spotify"
+          "hoppscotch"
+        ];
+        onActivation.cleanup = "zap";
+      };
 
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
@@ -61,6 +80,19 @@
     darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            # Install Homebrew under the default prefix
+            enable = true;
+
+            # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+            enableRosetta = true;
+
+            # User owning the Homebrew prefix
+            user = "RHARBUL";
+          };
+        }
       ];
     };
 
