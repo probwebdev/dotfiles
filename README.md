@@ -34,8 +34,8 @@ home-manager switch
 To update packages via `nix` use:
 ```shell
 nix-channel --update
-home-manager switch # --refresh could be used in addition
-# nix flake update --flake ~/.dotfiles/.config/home-manager to update flake
+nix flake update --flake ~/.dotfiles/nix/home-manager # to update flake
+home-manager switch --flake ~/.dotfiles/nix/home-manager # --refresh could be used in addition
 ```
 
 Look for existing files and either remove them or move to a backup folder. Alternatively run `stow --adopt .` to adopt existing configuration files.   

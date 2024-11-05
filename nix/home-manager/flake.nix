@@ -1,5 +1,5 @@
 {
-  description = "Probwebdev linux system flake";
+  description = "Probwebdev Linux system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";

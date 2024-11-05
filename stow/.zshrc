@@ -65,9 +65,6 @@ source $HOME/.zaliases
 # Initialize ZIM
 source ${ZIM_HOME}/init.zsh
 
-# Hook direnv to shell
-eval "$(direnv hook zsh)"
-
 # Activate proto (requires >=proto@0.38.0)
 eval "$(proto activate zsh --no-bin --no-shim)"
 

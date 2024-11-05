@@ -31,6 +31,7 @@
     eza
     delta
     direnv
+    dprint
     tlrc
     lesspipe
   ];
@@ -48,6 +49,18 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/alacritty/alacritty.toml".source = .config/alacritty/alacritty.toml;
+    ".config/alacritty/app.toml".source = .config/alacritty/app.toml;
+    ".config/alacritty/custom.toml".source = .config/alacritty/custom.toml;
+    ".config/alacritty/theme.toml".source = .config/alacritty/theme.toml;
+    ".config/delta/themes.gitconfig".source = .config/delta/themes.gitconfig;
+    ".config/nvim/init.vim".source = .config/nvim/init.vim;
+    ".config/tlrc/config.toml".source = .config/tlrc/config.toml;
+    ".config/tmux/tmux.conf".source = .config/tmux/tmux.conf;
+    ".config/starship.toml".source = .config/starship.toml;
+    ".local/bin/fzf-preview-all".source = .local/bin/fzf-preview-all;
+    ".local/share/zsh/fzf-preview.zsh".source = .local/share/zsh/fzf-preview.zsh;
+    ".local/share/zsh/zstyle.zsh".source = .local/share/zsh/zstyle.zsh;
   };
 
   # Home Manager can also manage your environment variables through
@@ -73,10 +86,22 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nix.package = pkgs.nix;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+    allow-dirty = true
+  '';
+
   # Home Manager has an option
   # to automatically set some environment variables
   # that will ease usage of software installed
   # with nix on non-NixOS linux
   # (fixing local issues, settings XDG_DATA_DIRS, etc.)
   targets.genericLinux.enable = true;
+
+  imports = [
+    ./programs/bat.nix
+    ./programs/direnv.nix
+    ./programs/git.nix
+  ];
 }

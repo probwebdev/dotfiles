@@ -1,0 +1,30 @@
+#
+# Plugins
+#
+
+#
+# Modules
+#
+
+zmodule environment
+zmodule input
+zmodule utility
+zmodule termtitle
+
+#
+# Completion
+#
+
+zmodule ~/.local/share/zsh --fpath site-functions
+zmodule zsh-users/zsh-completions --fpath src
+zmodule tldr-pages/tlrc --fpath completions
+zmodule completion
+
+#
+# Modules that must be initialized last
+#
+
+zmodule Aloxaf/fzf-tab
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-autosuggestions
