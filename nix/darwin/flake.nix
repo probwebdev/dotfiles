@@ -38,12 +38,14 @@
         onActivation.cleanup = "zap";
       };
 
+      # MacOS defaults
+      system.defaults = {
+        # requires logout to take effect
+        trackpad.Clicking = true;
+      };
+
       # Auto upgrade nix package and the daemon service.
       services.nix-daemon.enable = true;
-      # nix.package = pkgs.nix;
-
-      # Necessary for using flakes on this system.
-      #nix.settings.experimental-features = "nix-command flakes";
 
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
@@ -59,7 +61,6 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
-
       nixpkgs.config.allowUnfree = true;
 
       nix-homebrew = {
@@ -82,9 +83,9 @@
     # $ darwin-rebuild build --flake .#mbp
     darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
       modules = [
-        configuration
         nix-homebrew.darwinModules.nix-homebrew
         home-manager.darwinModules.home-manager
+        configuration
       ];
     };
 
