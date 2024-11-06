@@ -10,7 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nix-homebrew, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nix-homebrew, home-manager, nixpkgs }:
   let
     username = "RHARBUL";
     configuration = { pkgs, ... }: {
@@ -20,20 +20,6 @@
       [
         alacritty
         gnupg
-        git
-        stow
-        neovim
-        fzf
-        tmux
-        fd
-        starship
-        zoxide
-        bat
-        eza
-        delta
-        direnv
-        tlrc
-        lesspipe
       ];
 
       homebrew = {
@@ -76,10 +62,19 @@
 
       nixpkgs.config.allowUnfree = true;
 
-      users.users.${username} = {
-        name = "${username}";
-        home = "/Users/${username}";
+      nix-homebrew = {
+        enable = true;
+        enableRosetta = true;
+        user = "${username}";
       };
+
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users."${username}" = import ./home.nix;
+      };
+
+      users.users.${username}.home = "/Users/${username}";
     };
   in
   {
@@ -89,24 +84,7 @@
       modules = [
         configuration
         nix-homebrew.darwinModules.nix-homebrew
-        {
-          nix-homebrew = {
-            # Install Homebrew under the default prefix
-            enable = true;
-
-            # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-            enableRosetta = true;
-
-            # User owning the Homebrew prefix
-            user = "${username}";
-          };
-        }
         home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users."${username}" = import ./home.nix;
-        }
       ];
     };
 
