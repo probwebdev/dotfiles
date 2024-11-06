@@ -52,11 +52,11 @@
     ".local/bin/fzf-preview-all".source = .local/bin/fzf-preview-all;
     ".local/share/zsh/fzf-preview.zsh".source = .local/share/zsh/fzf-preview.zsh;
     ".local/share/zsh/zstyle.zsh".source = .local/share/zsh/zstyle.zsh;
-    ".zaliases".source = ./.zaliases;
+    #".zaliases".source = ./.zaliases;
     ".zimrc".source = ./.zimrc;
     ".zprofile".source = ./.zprofile;
     ".zshenv".source = ./.zshenv;
-    ".zshrc".source = ./.zshrc;
+    #".zshrc".source = ./.zshrc;
   };
 
   # Home Manager can also manage your environment variables through
@@ -91,5 +91,6 @@
     ./programs/bat.nix
     ./programs/direnv.nix
     ./programs/git.nix
+    ./programs/shell.nix
   ];
 }
