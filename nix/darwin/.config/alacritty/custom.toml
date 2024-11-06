@@ -1,0 +1,6 @@
+[window]
+dimensions = { columns = 118, lines = 34 }
+position = { x = 350, y = 450 }
+
+[font]
+size = 16
