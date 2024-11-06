@@ -2,29 +2,25 @@ skip_global_compinit=1
 zmodload -F zsh/terminfo +p:terminfo
 
 # User configuration
-export WORDCHARS=${WORDCHARS//[\/]}
 export TERM="xterm-256color"
 export SUDO_EDITOR="$(which nvim)"
 export EDITOR="$(which nvim)"
 export VISUAL="$(which nvim)"
-export DEFAULT_USER=$(whoami)
-export GPG_TTY=$(tty)
-export LANG=en_US.UTF-8
+export DEFAULT_USER="$(whoami)"
+export GPG_TTY="$(tty)"
+export LANG="en_US.UTF-8"
+export LESSOPEN="|fzf-preview-all %s"
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+export ZSH_HIGHLIGHT_HIGHLIGHTERS="(main brackets)"
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--height=85% --tmux=85% --preview-window='right:60%:wrap,<50(up:55%:wrap)'"
+export FZF_COMPLETION_TRIGGER="~~"
 
 # Private zsh configuration
 [[ -s "$HOME/.zshrc-private" ]] && source "$HOME/.zshrc-private"
 
-# Tools
-export LESSOPEN='|fzf-preview-all %s'
-export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--height=85% --tmux=85% --preview-window='right:60%:wrap,<50(up:55%:wrap)'"
-export FZF_COMPLETION_TRIGGER='~~'
-export HOMEBREW_NO_CLEANUP_FORMULAE=starship
-
-# History
+# ZSH opts
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
