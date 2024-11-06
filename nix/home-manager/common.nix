@@ -44,8 +44,6 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".config/alacritty/alacritty.toml".source = .config/alacritty/alacritty.toml;
-    ".config/alacritty/app.toml".source = .config/alacritty/app.toml;
-    ".config/alacritty/theme.toml".source = .config/alacritty/theme.toml;
     ".config/delta/themes.gitconfig".source = .config/delta/themes.gitconfig;
     ".config/nvim/init.vim".source = .config/nvim/init.vim;
     ".config/tlrc/config.toml".source = .config/tlrc/config.toml;
