@@ -6,10 +6,13 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, nix-darwin, nix-homebrew, nixpkgs }:
   let
+    username = "RHARBUL";
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
@@ -72,6 +75,11 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       nixpkgs.config.allowUnfree = true;
+
+      users.users.${username} = {
+        name = "${username}";
+        home = "/Users/${username}";
+      };
     };
   in
   {
@@ -90,8 +98,14 @@
             enableRosetta = true;
 
             # User owning the Homebrew prefix
-            user = "RHARBUL";
+            user = "${username}";
           };
+        }
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users."${username}" = import ./home.nix;
         }
       ];
     };
