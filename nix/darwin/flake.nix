@@ -84,7 +84,7 @@
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#mbp
+    # $ darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#mbp
     darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
       modules = [
         nix-homebrew.darwinModules.nix-homebrew

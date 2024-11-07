@@ -49,6 +49,14 @@ nix-channel --update
 nix flake update --flake ~/.dotfiles/nix/darwin # optional to update flake.lock and refetch latest nixpgks
 darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#mbp
 ```
+To clean up old generations, store or garbage use:
+```shell
+nix-store --gc # clean up store
+nix-collect-garbage -d # collect garbage
+sudo nix-collect-garbage -d # collect system garbage
+home-manager remove-generations # remove old generations for home manger
+sudo nix-collect-garbage --delete-older-than 3d # remove old generations for darwin
+```
 
 ## User zsh completions
 It's possible to automatically load custom completions from `USER_ZSH_SITE_FUNCTIONS`(e.g `~/.local/share/zsh/site-functions`).   
