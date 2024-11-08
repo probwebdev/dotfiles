@@ -17,8 +17,8 @@
   in
   {
     # Build linux flake using:
-    # $ home-manager switch --flake ~/.dotfiles/nix/home-manager
-    homeConfigurations."roberth" = home-manager.lib.homeManagerConfiguration {
+    # $ home-manager switch --flake ~/.dotfiles/nix/home-manager#t495
+    homeConfigurations."t495" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [ ./home.nix ];
     };
