@@ -22,6 +22,16 @@
         gnupg
       ];
 
+      fonts.packages = with pkgs; [
+        inter
+        iosevka
+        ibm-plex
+        fira-code
+        source-sans
+        source-code-pro
+        jetbrains-mono
+      ];
+
       homebrew = {
         enable = true;
         brews = [
