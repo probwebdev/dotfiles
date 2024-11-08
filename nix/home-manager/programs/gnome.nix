@@ -1,11 +1,8 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Enable Home Manager to discover and manange fonts
   fonts.fontconfig.enable = true;
 
-  home.packages = with pkgs;
-  [
+  home.packages = with pkgs; [
     inter
     iosevka-bin
     monaspace

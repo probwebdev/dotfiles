@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   programs.direnv.enable = true;
   programs.direnv.config = {
     global = {
@@ -8,7 +6,7 @@
       load_dotenv = true;
     };
     whitelist = {
-      prefix = [ "~/Projects" ];
+      prefix = ["~/Projects"];
     };
   };
 }

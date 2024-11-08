@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   programs.git.delta.enable = true;
   programs.git.delta.options = {
     features = "mellow-barbet";

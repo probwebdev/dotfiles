@@ -7,20 +7,22 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager }:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+  }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      config = { allowUnfree = true; };
+      config = {allowUnfree = true;};
     };
-  in
-  {
+  in {
     # Build linux flake using:
     # $ home-manager switch --flake ~/.dotfiles/nix/home-manager#t495
     homeConfigurations."t495" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = [ ./home.nix ];
+      modules = [./home.nix];
     };
   };
 }

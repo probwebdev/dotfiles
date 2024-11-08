@@ -10,14 +10,18 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nix-darwin, nix-homebrew, home-manager, nixpkgs }:
-  let
+  outputs = inputs @ {
+    self,
+    nix-darwin,
+    nix-homebrew,
+    home-manager,
+    nixpkgs,
+  }: let
     username = "RHARBUL";
-    configuration = { pkgs, ... }: {
+    configuration = {pkgs, ...}: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages = with pkgs;
-      [
+      environment.systemPackages = with pkgs; [
         alacritty
         gnupg
       ];
@@ -58,7 +62,7 @@
       services.nix-daemon.enable = true;
 
       # Create /etc/zshrc that loads the nix-darwin environment.
-      programs.zsh.enable = true;  # default shell on catalina
+      programs.zsh.enable = true; # default shell on catalina
       programs.zsh.enableCompletion = false;
       programs.zsh.enableBashCompletion = false;
 
@@ -91,8 +95,7 @@
 
       users.users.${username}.home = "/Users/${username}";
     };
-  in
-  {
+  in {
     # Build darwin flake using:
     # $ darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#mbp
     darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
