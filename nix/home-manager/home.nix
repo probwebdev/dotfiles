@@ -29,5 +29,6 @@
 
   imports = [
     ./common.nix
+    ./programs/gnome.nix
   ];
 }

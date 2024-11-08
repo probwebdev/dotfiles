@@ -24,10 +24,8 @@
 
       fonts.packages = with pkgs; [
         inter
-        iosevka
-        ibm-plex
-        fira-code
-        source-sans
+        iosevka-bin
+        monaspace
         source-code-pro
         jetbrains-mono
       ];
