@@ -83,6 +83,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 3d";
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     allow-dirty = true

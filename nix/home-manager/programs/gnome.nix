@@ -26,6 +26,7 @@
       font-name = "Inter Medium 11";
       icon-theme = "MoreWaita";
       monospace-font-name = "Source Code Pro Medium 12";
+      text-scaling-factor = 1;
     };
   };
   gtk.enable = true;
