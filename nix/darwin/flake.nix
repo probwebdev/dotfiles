@@ -28,6 +28,7 @@
           "pinentry-mac"
         ];
         casks = [
+          "1password"
           "jetbrains-toolbox"
           "firefox"
           "discord"
