@@ -49,7 +49,24 @@ nix flake update --flake ~/.dotfiles/nix/darwin # optional to update flake.lock 
 darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#mbp
 ```
 
-To clean up old generations, store or garbage use:
+## User zsh completions
+
+It's possible to automatically load custom completions from `USER_ZSH_SITE_FUNCTIONS`(e.g `~/.local/share/zsh/site-functions`).\
+Simply add your completion files to the dir or generate it with your tool e.g. `proto completions > ~/.local/share/zsh/site-functions/_proto` and reload terminal session.
+
+## Nix specifics
+
+### Fonts managed by home-manager
+
+For flatpak apps makes sense to provide additional access:
+
+```shell
+flatpak override --user --filesystem=/nix/store:ro --filesystem=xdg-data/fonts:ro --filesystem=xdg-config/fontconfig:ro
+```
+
+### Garbage collection
+
+Garbage collection should be automatic via home-manager, but it is possible to do it manually:
 
 ```shell
 home-manager expire-generations "-3 days" # remove old generations for home manger
@@ -60,12 +77,7 @@ nix-collect-garbage -d # collect garbage
 sudo nix-collect-garbage -d # collect system garbage
 ```
 
-## User zsh completions
-
-It's possible to automatically load custom completions from `USER_ZSH_SITE_FUNCTIONS`(e.g `~/.local/share/zsh/site-functions`).\
-Simply add your completion files to the dir or generate it with your tool e.g. `proto completions > ~/.local/share/zsh/site-functions/_proto` and reload terminal session.
-
-## Nix formatting
+### Formatting
 
 To prettify `*.nix` files you can use:
 

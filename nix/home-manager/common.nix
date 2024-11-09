@@ -92,8 +92,6 @@
   programs.home-manager.enable = true;
 
   # Enable Home Manager to discover and manange fonts
-  # For flatpak apps makes sense to give access to nix-managed fonts
-  # flatpak override --user --filesystem=/nix/store,xdg-data/fonts,xdg-config/fontconfig
   fonts.fontconfig.enable = true;
 
   nix.gc.automatic = true;
