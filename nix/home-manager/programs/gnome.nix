@@ -1,4 +1,17 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  home.file = {
+    # Flatpak theming workaround
+    morewaita-icon-theme = {
+      enable = true;
+      recursive = true;
+      source = config.lib.file.mkOutOfStoreSymlink "${pkgs.morewaita-icon-theme}/share/icons/MoreWaita";
+      target = "${config.xdg.dataHome}/icons/MoreWaita";
+    };
+  };
   # Enable Home Manager set Gnome specific settings
   dconf.settings = {
     "org/gnome/desktop/calendar" = {
@@ -11,7 +24,6 @@
       clock-show-weekday = true;
       document-font-name = "Inter 11";
       font-name = "Inter Medium 11";
-      icon-theme = "MoreWaita";
       monospace-font-name = "Source Code Pro Medium 12";
       text-scaling-factor = 1;
     };
