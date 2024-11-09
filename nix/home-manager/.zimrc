@@ -17,7 +17,6 @@ zmodule termtitle
 
 zmodule ~/.local/share/zsh --fpath site-functions
 zmodule zsh-users/zsh-completions --fpath src
-zmodule tldr-pages/tlrc --fpath completions
 zmodule completion
 
 #

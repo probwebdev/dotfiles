@@ -22,14 +22,12 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
-        alacritty
         gnupg
       ];
 
       fonts.packages = with pkgs; [
         inter
         iosevka-bin
-        monaspace
         source-code-pro
         jetbrains-mono
       ];

@@ -1,8 +1,13 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
+  imports = [
+    ./programs/alacritty.nix
+    ./programs/bat.nix
+    ./programs/direnv.nix
+    ./programs/git.nix
+    ./programs/shell.nix
+    ./programs/starship.nix
+  ];
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -10,7 +15,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -29,6 +34,15 @@
     dprint
     tlrc
     lesspipe
+    inter
+    iosevka-bin
+    monaspace
+    ibm-plex
+    source-sans
+    source-code-pro
+    jetbrains-mono
+    noto-fonts-color-emoji
+    noto-fonts-monochrome-emoji
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -44,20 +58,14 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".config/alacritty/alacritty.toml".source = .config/alacritty/alacritty.toml;
     ".config/delta/themes.gitconfig".source = .config/delta/themes.gitconfig;
     ".config/nvim/init.vim".source = .config/nvim/init.vim;
     ".config/tlrc/config.toml".source = .config/tlrc/config.toml;
     ".config/tmux/tmux.conf".source = .config/tmux/tmux.conf;
-    ".config/starship.toml".source = .config/starship.toml;
     ".local/bin/fzf-preview-all".source = .local/bin/fzf-preview-all;
     ".local/share/zsh/fzf-preview.zsh".source = .local/share/zsh/fzf-preview.zsh;
     ".local/share/zsh/zstyle.zsh".source = .local/share/zsh/zstyle.zsh;
-    #".zaliases".source = ./.zaliases;
     ".zimrc".source = ./.zimrc;
-    ".zprofile".source = ./.zprofile;
-    ".zshenv".source = ./.zshenv;
-    #".zshrc".source = ./.zshrc;
   };
 
   # Home Manager can also manage your environment variables through
@@ -83,17 +91,15 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Enable Home Manager to discover and manange fonts
+  # For flatpak apps makes sense to give access to nix-managed fonts
+  # flatpak override --user --filesystem=/nix/store,xdg-data/fonts,xdg-config/fontconfig
+  fonts.fontconfig.enable = true;
+
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 3d";
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     allow-dirty = true
   '';
-
-  imports = [
-    ./programs/bat.nix
-    ./programs/direnv.nix
-    ./programs/git.nix
-    ./programs/shell.nix
-  ];
 }

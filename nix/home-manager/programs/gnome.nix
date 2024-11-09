@@ -1,17 +1,4 @@
 {pkgs, ...}: {
-  # Enable Home Manager to discover and manange fonts
-  fonts.fontconfig.enable = true;
-
-  home.packages = with pkgs; [
-    inter
-    iosevka-bin
-    monaspace
-    ibm-plex
-    source-sans
-    source-code-pro
-    jetbrains-mono
-  ];
-
   # Enable Home Manager set Gnome specific settings
   dconf.settings = {
     "org/gnome/desktop/calendar" = {

@@ -1,8 +1,21 @@
 {
   config,
+  lib,
   pkgs,
+  nixgl,
   ...
 }: {
+  imports = [
+    ./common.nix
+    ./programs/gnome.nix
+  ];
+
+  # Configure nixGL in order to run gui apps e.g. alacritty
+  nixGL.packages = nixgl.packages;
+  nixGL.defaultWrapper = "mesa";
+  nixGL.offloadWrapper = "mesa";
+  nixGL.installScripts = ["mesa"];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "roberth";
@@ -12,9 +25,7 @@
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
-    ".config/alacritty/custom.toml".source = .config/alacritty/custom.toml;
-  };
+  home.file = {};
 
   home.sessionVariables = {
     # EDITOR = "emacs";
@@ -28,8 +39,11 @@
   targets.genericLinux.enable = true;
   nix.package = pkgs.nix;
 
-  imports = [
-    ./common.nix
-    ./programs/gnome.nix
-  ];
+  # Alacritty home-manager overrides
+  programs.alacritty.package = config.lib.nixGL.wrap pkgs.alacritty;
+  programs.alacritty.settings = {
+    font = {
+      size = lib.mkForce 12.00;
+    };
+  };
 }
