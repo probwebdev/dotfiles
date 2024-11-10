@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./programs/alacritty.nix
     ./programs/bat.nix
@@ -20,7 +24,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    alacritty
     git
     neovim
     fzf
@@ -59,13 +62,14 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".config/delta/themes.gitconfig".source = .config/delta/themes.gitconfig;
-    ".config/nvim/init.vim".source = .config/nvim/init.vim;
-    ".config/tlrc/config.toml".source = .config/tlrc/config.toml;
-    ".config/tmux/tmux.conf".source = .config/tmux/tmux.conf;
+    "${config.xdg.configHome}/nixpkgs/config.nix".source = ./nixpkgs-config.nix;
+    "${config.xdg.configHome}/delta/themes.gitconfig".source = .config/delta/themes.gitconfig;
+    "${config.xdg.configHome}/nvim/init.vim".source = .config/nvim/init.vim;
+    "${config.xdg.configHome}/tlrc/config.toml".source = .config/tlrc/config.toml;
+    "${config.xdg.configHome}/tmux/tmux.conf".source = .config/tmux/tmux.conf;
+    "${config.xdg.dataHome}/zsh/fzf-preview.zsh".source = .local/share/zsh/fzf-preview.zsh;
+    "${config.xdg.dataHome}/zsh/zstyle.zsh".source = .local/share/zsh/zstyle.zsh;
     ".local/bin/fzf-preview-all".source = .local/bin/fzf-preview-all;
-    ".local/share/zsh/fzf-preview.zsh".source = .local/share/zsh/fzf-preview.zsh;
-    ".local/share/zsh/zstyle.zsh".source = .local/share/zsh/zstyle.zsh;
     ".zimrc".source = ./.zimrc;
   };
 
@@ -97,8 +101,9 @@
 
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 3d";
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    allow-dirty = true
-  '';
+  nix.settings = {
+    allow-dirty = true;
+    experimental-features = ["nix-command" "flakes"];
+  };
+  nixpkgs.config = import ./nixpkgs-config.nix;
 }
