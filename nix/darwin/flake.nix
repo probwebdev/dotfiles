@@ -25,13 +25,6 @@
         gnupg
       ];
 
-      fonts.packages = with pkgs; [
-        inter
-        iosevka-bin
-        source-code-pro
-        jetbrains-mono
-      ];
-
       homebrew = {
         enable = true;
         brews = [
