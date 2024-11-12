@@ -109,8 +109,8 @@
       export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
     fi
     # JetBrains Toolbox App on Darwin
-    if [[ "$OSTYPE" == "darwin"* && -d $HOME/Library/\'Application Support\'/JetBrains/Toolbox/scripts ]]; then
-      export PATH="$PATH:$HOME/Library/\'Application Support\'/JetBrains/Toolbox/scripts"
+    if [[ "$OSTYPE" == "darwin"* && -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ]]; then
+      export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
     fi
 
     # Download proto manager if missing.
