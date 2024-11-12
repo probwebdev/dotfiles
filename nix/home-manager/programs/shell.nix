@@ -104,8 +104,14 @@
     # Add proto bins and shims to PATH
     export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 
-    # Added by Toolbox App
-    export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+    # JetBrains Toolbox App
+    if [[ -d $HOME/.local/share/JetBrains/Toolbox/scripts ]]; then
+      export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+    fi
+    # JetBrains Toolbox App on Darwin
+    if [[ "$OSTYPE" == "darwin"* && -d $HOME/Library/\'Application Support\'/JetBrains/Toolbox/scripts ]]; then
+      export PATH="$PATH:$HOME/Library/\'Application Support\'/JetBrains/Toolbox/scripts"
+    fi
 
     # Download proto manager if missing.
     if [[ ! -d $HOME/.proto ]]; then
