@@ -38,6 +38,9 @@
     dprint
     tlrc
     lesspipe
+    nil
+    nixd
+    zed-editor
     inter
     iosevka-bin
     monaspace
