@@ -1,5 +1,5 @@
 .idea
 .vscode
 .DS_Store
-**/alacritty/custom.toml
+stow/**/alacritty/custom.toml
 dprint.json

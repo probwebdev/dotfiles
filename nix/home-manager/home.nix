@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  nixgl,
+  #nixgl,
   ...
 }: {
   imports = [
@@ -11,10 +11,12 @@
   ];
 
   # Configure nixGL in order to run gui apps e.g. alacritty
-  nixGL.packages = nixgl.packages;
-  nixGL.defaultWrapper = "mesa";
-  nixGL.offloadWrapper = "mesa";
-  nixGL.installScripts = ["mesa"];
+  # Disabled by default due large dependencies size ~4GB
+  # and long compilations times
+  #nixGL.packages = nixgl.packages;
+  #nixGL.defaultWrapper = "mesa";
+  #nixGL.offloadWrapper = "mesa";
+  #nixGL.installScripts = ["mesa"];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -40,7 +42,9 @@
   nix.package = pkgs.nix;
 
   # Alacritty home-manager overrides
-  programs.alacritty.package = config.lib.nixGL.wrap pkgs.alacritty;
+  # Hack: Don't install alacritty as it requires to pull nixGL
+  #programs.alacritty.package = config.lib.nixGL.wrap pkgs.alacritty;
+  programs.alacritty.package = pkgs.emptyDirectory;
   programs.alacritty.settings = {
     font = {
       size = lib.mkForce 12.00;
