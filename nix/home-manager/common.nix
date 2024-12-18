@@ -37,6 +37,7 @@
     direnv
     dprint
     tlrc
+    btop
     lesspipe
     nil
     nixd
