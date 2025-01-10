@@ -38,7 +38,6 @@
           "telegram"
           "spotify"
           "hoppscotch"
-          "rapidapi"
           "zed"
         ];
         onActivation.cleanup = "zap";
