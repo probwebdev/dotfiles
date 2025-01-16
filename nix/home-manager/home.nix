@@ -41,6 +41,9 @@
   targets.genericLinux.enable = true;
   nix.package = pkgs.nix;
 
+  # Hack: Don't install git over system pkg
+  programs.git.package = pkgs.emptyDirectory;
+
   # Alacritty home-manager overrides
   # Hack: Don't install alacritty as it requires to pull nixGL
   #programs.alacritty.package = config.lib.nixGL.wrap pkgs.alacritty;
