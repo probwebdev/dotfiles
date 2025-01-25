@@ -3,11 +3,8 @@
   programs.direnv.config = {
     global = {
       disable_stdin = true;
-      load_dotenv = true;
       hide_env_diff = true;
-    };
-    whitelist = {
-      prefix = ["~/Projects"];
+      load_dotenv = true;
     };
   };
 }
