@@ -9,6 +9,10 @@
     side-by-side = false;
   };
   programs.git.enable = true;
+  programs.git.signing = {
+    format = "openpgp";
+    signByDefault = true;
+  };
   programs.git.extraConfig = {
     include = {
       path = "~/.config/delta/themes.gitconfig";
@@ -17,9 +21,6 @@
       autocrlf = "input";
       quotepath = false;
       editor = "nvim";
-    };
-    commit = {
-      gpgsign = true;
     };
     protocol = {
       version = 2;
