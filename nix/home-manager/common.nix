@@ -98,6 +98,9 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Packages overrides in favour of system packages
+  programs.alacritty.package = pkgs.emptyDirectory;
+
   # Enable Home Manager to discover and manange fonts
   fonts.fontconfig.enable = true;
 

@@ -47,7 +47,6 @@
   # Alacritty home-manager overrides
   # Hack: Don't install alacritty as it requires to pull nixGL
   #programs.alacritty.package = config.lib.nixGL.wrap pkgs.alacritty;
-  programs.alacritty.package = pkgs.emptyDirectory;
   programs.alacritty.settings = {
     font = {
       size = lib.mkForce 12.00;

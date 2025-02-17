@@ -31,6 +31,7 @@
           "pinentry-mac"
         ];
         casks = [
+          "alacritty"
           "1password"
           "jetbrains-toolbox"
           "firefox"
@@ -72,7 +73,6 @@
       };
 
       home-manager = {
-        useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "backup";
         extraSpecialArgs = {
