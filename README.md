@@ -31,7 +31,7 @@ git clone git@github.com:probwebdev/dotfiles.git .dotfiles
 
 # Fedora
 nix run home-manager/master -- switch --flake ~/.dotfiles/nix/home-manager\#t495
-home-manager switch --flake ~/.dotfiles/nix/home-manager -b backup
+home-manager switch --flake ~/.dotfiles/nix/home-manager\#t495 -b backup
 
 # MacOS
 nix run nix-darwin -- switch --flake ~/.dotfiles/nix/darwin\#mbp
