@@ -14,6 +14,7 @@
     #nixgl,
     home-manager,
   }: let
+    username = "roberth";
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
@@ -26,6 +27,7 @@
       inherit pkgs;
       modules = [./home.nix];
       extraSpecialArgs = {
+        inherit username;
         #inherit nixgl;
       };
     };

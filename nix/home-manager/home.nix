@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   #nixgl,
   ...
 }: {
@@ -20,8 +21,8 @@
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "roberth";
-  home.homeDirectory = "/home/roberth";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
   home.packages = with pkgs; [];
 
