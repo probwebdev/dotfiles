@@ -101,7 +101,7 @@
   # Packages overrides in favour of system packages
   programs.alacritty.package = pkgs.emptyDirectory;
 
-  # Enable Home Manager to discover and manange fonts
+  # Enable Home Manager to discover and manage fonts
   fonts.fontconfig.enable = true;
 
   nix.gc.automatic = true;

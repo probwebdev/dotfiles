@@ -34,6 +34,7 @@
           "alacritty"
           "1password"
           "jetbrains-toolbox"
+          "google-chrome"
           "firefox"
           "discord"
           "telegram"
