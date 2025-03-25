@@ -104,6 +104,9 @@
   # Enable Home Manager to discover and manage fonts
   fonts.fontconfig.enable = true;
 
+  # Hide home-manager news notification https://github.com/nix-community/home-manager/issues/2033
+  news.display = "silent";
+
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 3d";
   nix.settings = {
