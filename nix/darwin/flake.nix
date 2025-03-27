@@ -65,7 +65,7 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
-      nixpkgs.config = import ./nixpkgs-config.nix;
+      nixpkgs.config.allowUnfree = true;
 
       nix-homebrew = {
         enable = true;
