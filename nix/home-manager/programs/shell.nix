@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   programs.zsh.enable = true;
@@ -53,42 +53,44 @@
     "toolsup" = "echo $'Proto upgrade' ; proto upgrade ; echo $'\nZIM update' ; zimfw update ; echo $'\nNvim PlugUpdate' ; plugup ; echo $'\nTPM plugins update' ; tpmup";
   };
 
-  programs.zsh.initExtraFirst = ''
-    skip_global_compinit=1
-    zmodload -F zsh/terminfo +p:terminfo
-  '';
-  programs.zsh.initExtra = ''
-    HISTDUP=erase
-    setopt hist_save_no_dups
-    setopt hist_find_no_dups
-    setopt no_nomatch
+  programs.zsh.initContent = lib.mkMerge [
+    (lib.mkOrder 500 ''
+      skip_global_compinit=1
+      zmodload -F zsh/terminfo +p:terminfo
+    '')
+    (lib.mkOrder 1000 ''
+      HISTDUP=erase
+      setopt hist_save_no_dups
+      setopt hist_find_no_dups
+      setopt no_nomatch
 
-    # Set editor default keymap to emacs (`-e`) or vi (`-v`)
-    bindkey -v
-    bindkey '^p' history-search-backward
-    bindkey '^n' history-search-forward
-    bindkey '^[w' kill-region
+      # Set editor default keymap to emacs (`-e`) or vi (`-v`)
+      bindkey -v
+      bindkey '^p' history-search-backward
+      bindkey '^n' history-search-forward
+      bindkey '^[w' kill-region
 
-    # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-    for key ('^[[A' '^P' $terminfo[kcuu1]) bindkey $key history-substring-search-up
-    for key ('^[[B' '^N' $terminfo[kcud1]) bindkey $key history-substring-search-down
-    for key ('k') bindkey -M vicmd $key history-substring-search-up
-    for key ('j') bindkey -M vicmd $key history-substring-search-down
-    unset key
+      # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+      for key ('^[[A' '^P' $terminfo[kcuu1]) bindkey $key history-substring-search-up
+      for key ('^[[B' '^N' $terminfo[kcud1]) bindkey $key history-substring-search-down
+      for key ('k') bindkey -M vicmd $key history-substring-search-up
+      for key ('j') bindkey -M vicmd $key history-substring-search-down
+      unset key
 
-    # Private zsh configuration
-    [[ -s "$HOME/.zshrc-private" ]] && source "$HOME/.zshrc-private"
+      # Private zsh configuration
+      [[ -s "$HOME/.zshrc-private" ]] && source "$HOME/.zshrc-private"
 
-    # Completion styling and fzf preview
-    [[ -s "$USER_ZSH_DATA/zstyle.zsh" ]] && source $USER_ZSH_DATA/zstyle.zsh
-    [[ -s "$USER_ZSH_DATA/fzf-preview.zsh" ]] && source $USER_ZSH_DATA/fzf-preview.zsh
+      # Completion styling and fzf preview
+      [[ -s "$USER_ZSH_DATA/zstyle.zsh" ]] && source $USER_ZSH_DATA/zstyle.zsh
+      [[ -s "$USER_ZSH_DATA/fzf-preview.zsh" ]] && source $USER_ZSH_DATA/fzf-preview.zsh
 
-    # Initialize ZIM
-    source $ZIM_HOME/init.zsh
+      # Initialize ZIM
+      source $ZIM_HOME/init.zsh
 
-    # Activate proto (requires >=proto@0.38.0)
-    eval "$(proto activate zsh --no-bin --no-shim)"
-  '';
+      # Activate proto (requires >=proto@0.38.0)
+      eval "$(proto activate zsh --no-bin --no-shim)"
+    '')
+  ];
   programs.zsh.profileExtra = ''
     # Create zsh data dir if missing
     if [[ ! -d $USER_ZSH_SITE_FUNCTIONS ]]; then
