@@ -46,6 +46,7 @@
       };
 
       # MacOS defaults
+      system.primaryUser = "${username}";
       system.defaults = {
         # requires logout to take effect
         trackpad.Clicking = true;
