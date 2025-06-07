@@ -4,8 +4,9 @@ zmodload -F zsh/terminfo +p:terminfo
 # User configuration
 export WORDCHARS=${WORDCHARS//[\/]}
 export TERM="xterm-256color"
-export EDITOR="nvim"
-export VISUAL="nvim"
+export SUDO_EDITOR="$(which nvim)"
+export EDITOR="$(which nvim)"
+export VISUAL="$(which nvim)"
 export DEFAULT_USER=$(whoami)
 export GPG_TTY=$(tty)
 export LANG=en_US.UTF-8
@@ -34,6 +35,7 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt no_nomatch
 
 # Keybindings
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)

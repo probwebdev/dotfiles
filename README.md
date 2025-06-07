@@ -1,37 +1,86 @@
 # dotfiles
 
 Quick and organised way to use/re-use environment setup.\
-This setup relies on usage of [stow](https://www.gnu.org/software/stow/).
-
-[**Homebrew**](https://brew.sh/) is considered optional and configuration should be sourced manually. On Fedora it's better to use built-in package manager instead.
+This setup relies on usage of [nix](https://nixos.org/) via [Determinate Installer](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#install-nix).
 
 ## Pre-requisites
 
 ### Quick installation:
 
+Install `nix`:
+
+```shell
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
+  sh -s -- install
+```
+
 Fedora
 
 ```shell
 # shell tools
-dnf copr enable atim/starship
-dnf install alacritty starship stow zoxide fzf fd-find bat eza git-delta tmux neovim direnv
-# Homebrew (optional)
-brew install alacritty starship stow zoxide fzf fd-find bat eza git-delta tmux neovim direnv tlrc lesspipe
+dnf install alacritty git
 ```
 
-## Use dotfiles
+## Using dotfiles
 
-After pre-requisites installed do this from your home directory:
+After pre-requisites installed do this from home directory:
 
 ```shell
+# Clone dotfiles repo
 git clone git@github.com:probwebdev/dotfiles.git .dotfiles
-cd dotfiles
-stow .
+
+# Fedora
+nix run home-manager/master -- switch --flake ~/.dotfiles/nix/home-manager\#t495
+home-manager switch --flake ~/.dotfiles/nix/home-manager\#t495 -b backup
+
+# MacOS
+nix run nix-darwin -- switch --flake ~/.dotfiles/nix/darwin\#mbp
 ```
 
-Look for existing files and either remove them or move to a backup folder. Alternatively run `stow --adopt .` to adopt existing configuration files.   
-To stow new files run this from dotfiles `stow --restow .`
+To update packages via `nix` use:
+
+```shell
+# Fedora
+nix flake update --flake ~/.dotfiles/nix/home-manager # optional to update flake.lock and refetch latest nixpkgs
+home-manager switch --flake ~/.dotfiles/nix/home-manager#t495
+
+# MacOS
+nix flake update --flake ~/.dotfiles/nix/darwin # optional to update flake.lock and refetch latest nixpgks
+darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#mbp
+```
 
 ## User zsh completions
-It's possible to automatically load custom completions from `USER_ZSH_SITE_FUNCTIONS`(e.g `~/.local/share/zsh/site-functions`).   
-Simply add your completion files to the dir or generate it with your tool e.g `proto completions > ~/.local/share/zsh/site-functions/_proto` and reload terminal session.
+
+It's possible to automatically load custom completions from `USER_ZSH_SITE_FUNCTIONS`(e.g `~/.local/share/zsh/site-functions`).\
+Simply add your completion files to the dir or generate it with your tool e.g. `proto completions > ~/.local/share/zsh/site-functions/_proto` and reload terminal session.
+
+## Nix specifics
+
+### Fonts managed by home-manager
+
+For flatpak apps makes sense to provide additional access:
+
+```shell
+flatpak override --user --filesystem=/nix/store:ro --filesystem=xdg-data/fonts:ro --filesystem=xdg-config/fontconfig:ro
+```
+
+### Garbage collection
+
+Garbage collection should be automatic via home-manager, but it is possible to do it manually:
+
+```shell
+home-manager expire-generations "-3 days" # remove old generations for home manger
+sudo nix-collect-garbage --delete-older-than 3d # remove old generations and cleanup nix for darwin
+# or
+nix-store --gc # clean up store
+nix-collect-garbage -d # collect garbage
+sudo nix-collect-garbage -d # collect system garbage
+```
+
+### Formatting
+
+To prettify `*.nix` files you can use:
+
+```shell
+nix run nixpkgs#alejandra -- ~/.dotfiles/nix
+```

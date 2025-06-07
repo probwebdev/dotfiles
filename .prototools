@@ -1,4 +1,0 @@
-[plugins]
-dprint = "https://raw.githubusercontent.com/Phault/proto-toml-plugins/main/dprint/plugin.toml"
-fzf = "https://raw.githubusercontent.com/appthrust/proto-toml-plugins/main/fzf/plugin.toml"
-gh = "https://raw.githubusercontent.com/appthrust/proto-toml-plugins/main/gh/plugin.toml"

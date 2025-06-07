@@ -1,9 +1,0 @@
-.git
-.gitignore
-.idea
-.vscode
-.editorconfig
-apps
-dprint.json
-README.md
-LICENSE
