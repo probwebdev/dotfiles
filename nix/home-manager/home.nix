@@ -40,7 +40,6 @@
   # with nix on non-NixOS linux
   # (fixing local issues, settings XDG_DATA_DIRS, etc.)
   targets.genericLinux.enable = true;
-  nix.package = pkgs.nix;
 
   # Hack: Don't install git over system pkg
   programs.git.package = pkgs.emptyDirectory;

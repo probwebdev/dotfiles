@@ -1,6 +1,6 @@
 # dotfiles
 
-Quick and organised way to use/re-use environment setup.\
+Quick and organized way to use/re-use environment setup.\
 This setup relies on usage of [nix](https://nixos.org/) via [Determinate Installer](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#install-nix).
 
 ## Pre-requisites
@@ -10,8 +10,11 @@ This setup relies on usage of [nix](https://nixos.org/) via [Determinate Install
 Install `nix`:
 
 ```shell
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
-  sh -s -- install
+# To install Determinate Nix (recommended)
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate
+
+# or to install upstream Nix
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
 
 Fedora
@@ -23,7 +26,7 @@ dnf install alacritty git
 
 ## Using dotfiles
 
-After pre-requisites installed do this from home directory:
+After pre-requisites installed, do this from home directory:
 
 ```shell
 # Clone dotfiles repo
@@ -49,6 +52,17 @@ nix flake update --flake ~/.dotfiles/nix/darwin # optional to update flake.lock 
 darwin-rebuild switch --flake ~/.dotfiles/nix/darwin#mbp
 ```
 
+To upgrade `nix` itself use:
+
+```shell
+# If Determinate Nix was installed
+sudo determinate-nixd login
+sudo determinate-nixd upgrade
+
+# or if upstream Nix was installed
+sudo -i nix upgrade-nix
+```
+
 ## User zsh completions
 
 It's possible to automatically load custom completions from `USER_ZSH_SITE_FUNCTIONS`(e.g `~/.local/share/zsh/site-functions`).\
@@ -66,7 +80,7 @@ flatpak override --user --filesystem=/nix/store:ro --filesystem=xdg-data/fonts:r
 
 ### Garbage collection
 
-Garbage collection should be automatic via home-manager, but it is possible to do it manually:
+Garbage collection should be automatic via `home-manager` and/or `determinate-nixd`, but it is possible to do it manually:
 
 ```shell
 home-manager expire-generations "-3 days" # remove old generations for home manger

@@ -109,9 +109,5 @@
 
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 3d";
-  nix.settings = {
-    allow-dirty = true;
-    experimental-features = ["nix-command" "flakes"];
-  };
   nixpkgs.config = import ./nixpkgs-config.nix;
 }

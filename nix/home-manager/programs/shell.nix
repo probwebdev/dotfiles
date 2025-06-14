@@ -87,6 +87,9 @@
       # Initialize ZIM
       source $ZIM_HOME/init.zsh
 
+      # Enable Determinate NIX autocomplete
+      eval "$(determinate-nixd completion zsh)"
+
       # Activate proto (requires >=proto@0.38.0)
       eval "$(proto activate zsh --no-bin --no-shim)"
     '')
