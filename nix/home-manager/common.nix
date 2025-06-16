@@ -38,6 +38,7 @@
     tlrc
     btop
     lesspipe
+    imagemagick
     nil
     nixd
     inter
