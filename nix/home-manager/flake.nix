@@ -10,9 +10,9 @@
 
   outputs = {
     self,
+    home-manager,
     nixpkgs,
     #nixgl,
-    home-manager,
   }: let
     username = "roberth";
     system = "x86_64-linux";
