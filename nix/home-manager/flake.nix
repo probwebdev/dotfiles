@@ -2,7 +2,6 @@
   description = "Probwebdev Linux system flake";
 
   inputs = {
-    #nixgl.url = "github:nix-community/nixGL";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +11,6 @@
     self,
     home-manager,
     nixpkgs,
-    #nixgl,
   }: let
     username = "roberth";
     system = "x86_64-linux";
@@ -28,7 +26,6 @@
       modules = [./home.nix];
       extraSpecialArgs = {
         inherit username;
-        #inherit nixgl;
       };
     };
   };

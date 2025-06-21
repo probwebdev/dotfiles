@@ -3,21 +3,12 @@
   lib,
   pkgs,
   username,
-  #nixgl,
   ...
 }: {
   imports = [
     ./common.nix
     ./programs/gnome.nix
   ];
-
-  # Configure nixGL in order to run gui apps e.g. alacritty
-  # Disabled by default due large dependencies size ~4GB
-  # and long compilations times
-  #nixGL.packages = nixgl.packages;
-  #nixGL.defaultWrapper = "mesa";
-  #nixGL.offloadWrapper = "mesa";
-  #nixGL.installScripts = ["mesa"];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -45,8 +36,6 @@
   programs.git.package = pkgs.emptyDirectory;
 
   # Alacritty home-manager overrides
-  # Hack: Don't install alacritty as it requires to pull nixGL
-  #programs.alacritty.package = config.lib.nixGL.wrap pkgs.alacritty;
   programs.alacritty.settings = {
     font = {
       size = lib.mkForce 12.00;
