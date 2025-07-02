@@ -32,6 +32,7 @@
         ];
         casks = [
           "alacritty"
+          "bruno"
           "1password"
           "jetbrains-toolbox"
           "google-chrome"
@@ -39,7 +40,6 @@
           "discord"
           "telegram"
           "spotify"
-          "hoppscotch"
           "zed"
         ];
         onActivation.cleanup = "zap";
