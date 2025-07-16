@@ -3,8 +3,9 @@
   pkgs,
   ...
 }: {
-  imports = [
+  imports = with pkgs; [
     ./programs/alacritty.nix
+    ./programs/ghostty.nix
     ./programs/bat.nix
     ./programs/direnv.nix
     ./programs/git.nix
@@ -100,7 +101,7 @@
   programs.home-manager.enable = true;
 
   # Packages overrides in favour of system packages
-  programs.alacritty.package = pkgs.emptyDirectory;
+  #programs.alacritty.package = pkgs.emptyDirectory;
 
   # Enable Home Manager to discover and manage fonts
   fonts.fontconfig.enable = true;

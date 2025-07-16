@@ -32,6 +32,7 @@
         ];
         casks = [
           "alacritty"
+          "ghostty"
           "bruno"
           "devtoys"
           "1password"

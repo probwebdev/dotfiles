@@ -41,4 +41,9 @@
       size = lib.mkForce 12.00;
     };
   };
+
+  # Ghostty home-manager overrides
+  programs.ghostty.settings = {
+    font-size = lib.mkForce 12.00;
+  };
 }
