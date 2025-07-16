@@ -33,6 +33,7 @@
         casks = [
           "alacritty"
           "bruno"
+          "devtoys"
           "1password"
           "jetbrains-toolbox"
           "google-chrome"
