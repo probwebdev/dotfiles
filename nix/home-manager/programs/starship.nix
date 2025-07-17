@@ -15,7 +15,6 @@
         format = "$symbol (bold green)";
         success_symbol = "[λ](bold green)";
         error_symbol = "[✘](bold red)";
-        vicmd_symbol = "[⮜](bold green)";
         disabled = false;
       };
       username = {
@@ -34,7 +33,7 @@
       sudo = {
         format = "[ $symbol]($style)";
         style = "bold yellow";
-        symbol = "🗲";
+        symbol = "⚡";
         disabled = false;
       };
       directory = {
