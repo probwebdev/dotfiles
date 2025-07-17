@@ -12,6 +12,7 @@
       font-style = "Medium Extended";
       font-style-bold = "Bold Extended";
       font-style-bold-italic = "Bold Extended Italic";
+      font-feature = ["-calt" "-liga" "-dlig"];
       cursor-style-blink = true;
       window-width = 112;
       window-height = 34;
