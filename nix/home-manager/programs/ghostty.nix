@@ -5,7 +5,7 @@
     enableZshIntegration = true;
     installBatSyntax = false;
     settings = {
-      term  = "xterm-256color";
+      term = "xterm-256color";
       theme = "OneDark";
       font-size = 16.00;
       font-family = "Iosevka Term";
