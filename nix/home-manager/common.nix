@@ -29,6 +29,7 @@
     fzf
     tmux
     fd
+    fastfetch
     starship
     zoxide
     bat
