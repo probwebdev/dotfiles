@@ -17,7 +17,7 @@
     home-manager,
     nixpkgs,
   }: let
-    username = "RHARBUL";
+    username = "rharbul";
     configuration = {pkgs, ...}: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
@@ -27,15 +27,17 @@
       homebrew = {
         enable = true;
         brews = [
+          "xz"
           "gnupg"
           "pinentry-mac"
+          "azure-cli"
         ];
         casks = [
-          "alacritty"
           "ghostty"
           "bruno"
           "devtoys"
           "1password"
+          "bitwarden"
           "jetbrains-toolbox"
           "google-chrome"
           "firefox"
@@ -52,6 +54,10 @@
       system.defaults = {
         # requires logout to take effect
         trackpad.Clicking = true;
+        # dock settings
+        dock.minimize-to-application = true;
+        dock.show-recents = false;
+        dock.scroll-to-open = true;
       };
 
       # Create /etc/zshrc that loads the nix-darwin environment.
