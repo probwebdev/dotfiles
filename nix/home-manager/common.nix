@@ -4,7 +4,6 @@
   ...
 }: {
   imports = with pkgs; [
-    ./programs/alacritty.nix
     ./programs/ghostty.nix
     ./programs/bat.nix
     ./programs/direnv.nix
