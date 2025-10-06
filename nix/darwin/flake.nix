@@ -26,11 +26,15 @@
 
       homebrew = {
         enable = true;
+        taps = [
+          "Azure/homebrew-functions"
+        ];
         brews = [
           "xz"
           "gnupg"
           "pinentry-mac"
           "azure-cli"
+          "azure-functions-core-tools@4"
         ];
         casks = [
           "ghostty"
