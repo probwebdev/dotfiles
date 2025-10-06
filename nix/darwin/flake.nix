@@ -44,6 +44,7 @@
           "discord"
           "telegram"
           "spotify"
+          "visual-studio-code"
           "zed"
         ];
         onActivation.cleanup = "zap";
