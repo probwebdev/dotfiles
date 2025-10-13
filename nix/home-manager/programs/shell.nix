@@ -91,7 +91,7 @@
       eval "$(determinate-nixd completion zsh)"
 
       # Activate proto (requires >=proto@0.38.0)
-      eval "$(proto activate zsh --no-bin --no-shim)"
+      eval "$(proto activate zsh)"
     '')
   ];
   programs.zsh.profileExtra = ''
