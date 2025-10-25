@@ -6,6 +6,7 @@
   imports = with pkgs; [
     ./programs/ghostty.nix
     ./programs/bat.nix
+    ./programs/delta.nix
     ./programs/direnv.nix
     ./programs/git.nix
     ./programs/shell.nix

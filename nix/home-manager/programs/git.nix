@@ -1,19 +1,10 @@
 {...}: {
-  programs.git.delta.enable = true;
-  programs.git.delta.options = {
-    features = "mellow-barbet";
-    navigate = true;
-    dark = true;
-    light = false;
-    line-numbers = true;
-    side-by-side = false;
-  };
   programs.git.enable = true;
   programs.git.signing = {
     format = "openpgp";
     signByDefault = true;
   };
-  programs.git.extraConfig = {
+  programs.git.settings = {
     include = {
       path = "~/.config/delta/themes.gitconfig";
     };
