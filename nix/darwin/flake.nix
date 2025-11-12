@@ -50,6 +50,9 @@
           "spotify"
           "visual-studio-code"
           "zed"
+          "microsoft-auto-update"
+          "microsoft-outlook"
+          "microsoft-teams"
         ];
         onActivation.cleanup = "zap";
       };

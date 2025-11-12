@@ -41,6 +41,9 @@
     btop
     lesspipe
     imagemagick
+    mkcert
+    nss_latest
+    nss_latest.tools
     nil
     nixd
     inter
