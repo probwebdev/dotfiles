@@ -37,6 +37,7 @@
           "azure-functions-core-tools@4"
         ];
         casks = [
+          "affinity"
           "ghostty"
           "bruno"
           "devtoys"
