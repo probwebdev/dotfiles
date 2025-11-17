@@ -92,6 +92,9 @@
 
       # Activate proto (requires >=proto@0.38.0)
       eval "$(proto activate zsh)"
+
+      # Activate starship
+      eval "$(starship init zsh)"
     '')
   ];
   programs.zsh.profileExtra = ''

@@ -1,0 +1,17 @@
+config-file = ?~/.config/ghostty/custom
+cursor-style-blink = true
+font-family = Iosevka Term
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-size = 16.00
+font-style = Medium Extended
+font-style-bold = Bold Extended
+font-style-bold-italic = Bold Extended Italic
+term = xterm-256color
+theme = OneDark
+window-height = 34
+window-padding-x = 8
+window-padding-y = 8
+window-save-state = always
+window-width = 112

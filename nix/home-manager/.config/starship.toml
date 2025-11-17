@@ -1,0 +1,45 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+command_timeout = 500
+format = """[┌](green) $username$hostname$sudo
+[│](green) $directory$git_status$git_branch$git_state$nodejs$deno$bun$docker_context
+[└](green) $character"""
+
+[character]
+disabled = false
+error_symbol = "[✘](bold red)"
+format = "$symbol (bold green)"
+success_symbol = "[λ](bold green)"
+
+[directory]
+disabled = false
+style = "bold italic yellow"
+truncate_to_repo = false
+truncation_length = 3
+truncation_symbol = "…/"
+
+[docker_context]
+disabled = false
+
+[hostname]
+disabled = false
+format = "[@$hostname]($style)"
+ssh_only = true
+style = "bold dimmed green"
+
+[nodejs]
+symbol = "⬢ "
+
+[sudo]
+disabled = false
+format = "[ $symbol]($style)"
+style = "bold yellow"
+symbol = "⚡"
+
+[username]
+disabled = false
+format = "[$user]($style)"
+show_always = true
+style_root = "bold red"
+style_user = "bold green"

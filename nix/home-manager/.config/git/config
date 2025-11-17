@@ -1,0 +1,49 @@
+[commit]
+	gpgSign = true
+
+[core]
+	autocrlf = "input"
+	editor = "nvim"
+	pager = "delta"
+	quotepath = false
+
+[delta]
+	dark = true
+	features = "mellow-barbet"
+	light = false
+	line-numbers = true
+	navigate = true
+	side-by-side = false
+
+[diff]
+	colorMoved = "default"
+
+[gpg]
+	format = "openpgp"
+
+[gpg "openpgp"]
+	program = "gpg"
+
+[include]
+	path = "~/.config/delta/themes.gitconfig"
+
+[init]
+	defaultBranch = "main"
+
+[interactive]
+	diffFilter = "delta --color-only"
+
+[merge]
+	conflictstyle = "diff3"
+
+[protocol]
+	version = 2
+
+[pull]
+	ff = "only"
+
+[push]
+	autoSetupRemote = true
+
+[tag]
+	gpgSign = true

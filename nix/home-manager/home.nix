@@ -31,19 +31,8 @@
   # with nix on non-NixOS linux
   # (fixing local issues, settings XDG_DATA_DIRS, etc.)
   targets.genericLinux.enable = true;
+  targets.genericLinux.gpu.enable = false;
 
   # Hack: Don't install git over system pkg
-  programs.git.package = pkgs.emptyDirectory;
-
-  # Alacritty home-manager overrides
-  programs.alacritty.settings = {
-    font = {
-      size = lib.mkForce 12.00;
-    };
-  };
-
-  # Ghostty home-manager overrides
-  programs.ghostty.settings = {
-    font-size = lib.mkForce 12.00;
-  };
+  #programs.git.package = pkgs.emptyDirectory;
 }
