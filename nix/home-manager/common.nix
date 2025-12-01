@@ -77,6 +77,7 @@
     "${config.xdg.dataHome}/zsh/zstyle.zsh".source = .local/share/zsh/zstyle.zsh;
     ".local/bin/fzf-preview-all".source = .local/bin/fzf-preview-all;
     ".zimrc".source = ./.zimrc;
+    ".prototools".source = ./.prototools;
   };
 
   # Home Manager can also manage your environment variables through

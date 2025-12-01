@@ -1,0 +1,5 @@
+[tools.npm]
+shared-globals-dir = true
+
+[tools.pnpm]
+shared-globals-dir = true

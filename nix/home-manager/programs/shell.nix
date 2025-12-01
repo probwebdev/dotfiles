@@ -110,7 +110,7 @@
     export PATH="$USER_BIN_HOME:$PATH"
 
     # Add proto bins and shims to PATH
-    export PATH="$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
+    export PATH="$PROTO_HOME/tools/node/globals/bin:$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
 
     # JetBrains Toolbox App
     if [[ "$OSTYPE" == "darwin"* && -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ]]; then
