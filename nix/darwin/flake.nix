@@ -44,6 +44,7 @@
           "claude-code"
           "chatgpt"
           "codex"
+          "docker-desktop"
           "devtoys"
           "1password"
           "bitwarden"
