@@ -56,6 +56,7 @@
           "spotify"
           "visual-studio-code"
           "zed"
+          "dotnet-sdk"
           "microsoft-auto-update"
           "microsoft-outlook"
           "microsoft-teams"
