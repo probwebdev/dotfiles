@@ -78,7 +78,7 @@ require('lualine').setup {
   }
 }
 
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.config').setup {
   ensure_installed = {
     "astro",
     "bash",
