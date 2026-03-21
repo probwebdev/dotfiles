@@ -5,6 +5,7 @@
 }: {
   imports = [
     ../home-manager/common.nix
+    ../home-manager/dev.nix
   ];
 
   home.packages = with pkgs; [

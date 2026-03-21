@@ -28,6 +28,7 @@
         enable = true;
         taps = [
           "Azure/homebrew-functions"
+          "hashicorp/tap"
         ];
         brews = [
           "xz"
@@ -35,6 +36,7 @@
           "pinentry-mac"
           "azure-cli"
           "azure-functions-core-tools@4"
+          "hashicorp/tap/terraform"
         ];
         casks = [
           "affinity"
@@ -107,7 +109,7 @@
         extraSpecialArgs = {
           inherit username;
         };
-        users."${username}" = import ./home.nix;
+        users."${username}" = import ./home-mbp14.nix;
       };
 
       users.users.${username}.home = "/Users/${username}";
