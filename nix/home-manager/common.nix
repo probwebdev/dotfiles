@@ -29,16 +29,9 @@
     bat
     eza
     delta
-    dprint
     tlrc
     btop
     lesspipe
-    imagemagick
-    mkcert
-    nss_latest
-    nss_latest.tools
-    nil
-    nixd
     inter
     iosevka-bin
     monaspace
@@ -66,8 +59,6 @@
     "${config.xdg.configHome}/nixpkgs/config.nix".source = ./nixpkgs-config.nix;
     "${config.xdg.configHome}/bat/config".source = .config/bat/config;
     "${config.xdg.configHome}/delta/themes.gitconfig".source = .config/delta/themes.gitconfig;
-    "${config.xdg.configHome}/ghostty/config".source = .config/ghostty/config;
-    "${config.xdg.configHome}/ghostty/themes/OneDark".source = .config/ghostty/themes/OneDark;
     "${config.xdg.configHome}/git/config".source = .config/git/config;
     "${config.xdg.configHome}/nvim/init.vim".source = .config/nvim/init.vim;
     "${config.xdg.configHome}/tlrc/config.toml".source = .config/tlrc/config.toml;

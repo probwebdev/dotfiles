@@ -23,7 +23,14 @@
     # $ home-manager switch --flake ~/.dotfiles/nix/home-manager#t495
     homeConfigurations."t495" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
-      modules = [./home.nix];
+      modules = [./home-t495.nix];
+      extraSpecialArgs = {
+        inherit username;
+      };
+    };
+    homeConfigurations."homelab" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [./home-lab.nix];
       extraSpecialArgs = {
         inherit username;
       };

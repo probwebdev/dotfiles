@@ -7,6 +7,7 @@
 }: {
   imports = [
     ./common.nix
+    ./dev.nix
     ./programs/gnome.nix
   ];
 
