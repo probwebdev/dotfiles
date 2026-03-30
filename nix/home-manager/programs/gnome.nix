@@ -15,6 +15,7 @@
 
   # Enable Home Manager set Gnome specific settings
   gtk.enable = true;
+  gtk.gtk4.theme = null;
   gtk.iconTheme = {
     #package = pkgs.morewaita-icon-theme;
     name = "MoreWaita";
