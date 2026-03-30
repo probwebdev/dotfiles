@@ -119,6 +119,11 @@
       export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
     fi
 
+    # OpenCode
+    if [[ ! "$OSTYPE" == "darwin"* ]]; then
+      export PATH="$HOME/.opencode/bin:$PATH"
+    fi
+
     # Download proto manager if missing.
     if [[ ! -d $HOME/.proto ]]; then
       curl -fsSL https://moonrepo.dev/install/proto.sh | bash

@@ -29,6 +29,7 @@
         taps = [
           "Azure/homebrew-functions"
           "hashicorp/tap"
+          "anomalyco/tap"
         ];
         brews = [
           "xz"
@@ -37,6 +38,7 @@
           "azure-cli"
           "azure-functions-core-tools@4"
           "hashicorp/tap/terraform"
+          "anomalyco/tap/opencode"
         ];
         casks = [
           "affinity"
