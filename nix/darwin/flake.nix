@@ -35,6 +35,8 @@
           "xz"
           "gnupg"
           "pinentry-mac"
+          "kubernetes-cli"
+          "k9s"
           "azure-cli"
           "azure-functions-core-tools@4"
           "hashicorp/tap/terraform"
@@ -42,6 +44,7 @@
         ];
         casks = [
           "affinity"
+          "figma"
           "ghostty"
           "bruno"
           "claude"
