@@ -30,6 +30,7 @@
           "Azure/homebrew-functions"
           "hashicorp/tap"
           "anomalyco/tap"
+          "supabase/tap/supabase"
         ];
         brews = [
           "xz"
@@ -41,6 +42,7 @@
           "azure-functions-core-tools@4"
           "hashicorp/tap/terraform"
           "anomalyco/tap/opencode"
+          "supabase/tap/supabase"
         ];
         casks = [
           "affinity"
