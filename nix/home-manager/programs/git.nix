@@ -1,17 +1,18 @@
 {...}: {
   programs.git.enable = true;
+  # Preserve the host Git and GPG installations (Homebrew on macOS).
+  programs.git.package = null;
   programs.git.signing = {
     format = "openpgp";
     signByDefault = true;
+    signer = "gpg";
   };
   programs.git.settings = {
-    include = {
-      path = "~/.config/delta/themes.gitconfig";
-    };
     core = {
       autocrlf = "input";
       quotepath = false;
       editor = "nvim";
+      pager = "delta";
     };
     protocol = {
       version = 2;

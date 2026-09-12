@@ -5,6 +5,7 @@
 }: {
   imports = [
     ../home-manager/common.nix
+    ../home-manager/desktop.nix
     ../home-manager/dev.nix
   ];
 

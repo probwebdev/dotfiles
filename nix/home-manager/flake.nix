@@ -35,5 +35,12 @@
         inherit username;
       };
     };
+    homeConfigurations."steamos" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [./home-steamos.nix];
+      extraSpecialArgs = {
+        username = "deck"; # Change this to match the SteamOS account.
+      };
+    };
   };
 }

@@ -2,13 +2,14 @@
   programs.starship = {
     enable = true;
     settings = {
+      "$schema" = "https://starship.rs/config-schema.json";
       add_newline = true;
       command_timeout = 500;
       format = lib.concatStrings [
         "[┌](green) $username$hostname$sudo"
-        "$line_break"
+        "\n"
         "[│](green) $directory$git_status$git_branch$git_state$nodejs$deno$bun$docker_context"
-        "$line_break"
+        "\n"
         "[└](green) $character"
       ];
       character = {

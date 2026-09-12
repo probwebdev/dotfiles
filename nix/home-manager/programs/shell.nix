@@ -46,8 +46,8 @@
     "tpmclean" = "~/.tmux/plugins/tpm/bin/clean_plugins";
 
     # Nvim aliases
-    "plugi" = "nvim -es -u ~/.config/nvim/init.vim -i NONE -c 'PlugInstall' -c 'qa'";
-    "plugup" = "nvim -es -u ~/.config/nvim/init.vim -i NONE -c 'PlugUpdate' -c 'qa'";
+    "plugi" = "nvim -es -i NONE -c 'PlugInstall' -c 'qa'";
+    "plugup" = "nvim -es -i NONE -c 'PlugUpdate' -c 'qa'";
 
     # Custom aliases
     "toolsup" = "echo $'Proto upgrade' ; proto upgrade ; echo $'\nZIM update' ; zimfw update ; echo $'\nNvim PlugUpdate' ; plugup ; echo $'\nTPM plugins update' ; tpmup";
@@ -92,9 +92,6 @@
 
       # Activate proto (requires >=proto@0.38.0)
       eval "$(proto activate zsh)"
-
-      # Activate starship
-      eval "$(starship init zsh)"
     '')
   ];
   programs.zsh.profileExtra = ''
@@ -131,9 +128,9 @@
     fi
 
     # Download tmux plugin manager if missing.
-    if [[ ! -d $HOME/.tmux/plugins ]]; then
-      mkdir -p $HOME/.tmux/plugins
-      git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+    if [[ ! -f "$HOME/.tmux/plugins/tpm/tpm" ]]; then
+      mkdir -p "$HOME/.tmux/plugins"
+      git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
     fi
 
     # Download vim/nvim plugin manager if missing.

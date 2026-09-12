@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     dprint
     imagemagick
@@ -14,9 +10,4 @@
     nixd
     alejandra
   ];
-
-  home.file = {
-    "${config.xdg.configHome}/ghostty/config".source = .config/ghostty/config;
-    "${config.xdg.configHome}/ghostty/themes/OneDark".source = .config/ghostty/themes/OneDark;
-  };
 }

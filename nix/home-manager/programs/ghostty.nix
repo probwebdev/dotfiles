@@ -1,7 +1,9 @@
-{pkgs, ...}: {
+{...}: {
   programs.ghostty = {
     enable = true;
-    package = pkgs.emptyDirectory;
+    # Ghostty is installed by the host package manager/Homebrew.
+    package = null;
+    systemd.enable = false;
     enableZshIntegration = true;
     installBatSyntax = false;
     settings = {
