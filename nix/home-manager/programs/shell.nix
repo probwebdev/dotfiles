@@ -32,9 +32,6 @@
     USER_ZSH_DATA = "$HOME/.local/share/zsh";
     USER_ZSH_SITE_FUNCTIONS = "$USER_ZSH_DATA/site-functions";
     ZIM_HOME = "$HOME/.zim";
-    PROTO_HOME = "$HOME/.proto";
-    GOROOT = "$HOME/.go";
-    GOBIN = "$HOME/.go/bin";
   };
 
   programs.zsh.shellAliases = {
@@ -44,13 +41,6 @@
     "tpmi" = "~/.tmux/plugins/tpm/bin/install_plugins";
     "tpmup" = "~/.tmux/plugins/tpm/bin/update_plugins all";
     "tpmclean" = "~/.tmux/plugins/tpm/bin/clean_plugins";
-
-    # Nvim aliases
-    "plugi" = "nvim -es -i NONE -c 'PlugInstall' -c 'qa'";
-    "plugup" = "nvim -es -i NONE -c 'PlugUpdate' -c 'qa'";
-
-    # Custom aliases
-    "toolsup" = "echo $'Proto upgrade' ; proto upgrade ; echo $'\nZIM update' ; zimfw update ; echo $'\nNvim PlugUpdate' ; plugup ; echo $'\nTPM plugins update' ; tpmup";
   };
 
   programs.zsh.initContent = lib.mkMerge [
@@ -70,13 +60,6 @@
       bindkey '^n' history-search-forward
       bindkey '^[w' kill-region
 
-      # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-      for key ('^[[A' '^P' $terminfo[kcuu1]) bindkey $key history-substring-search-up
-      for key ('^[[B' '^N' $terminfo[kcud1]) bindkey $key history-substring-search-down
-      for key ('k') bindkey -M vicmd $key history-substring-search-up
-      for key ('j') bindkey -M vicmd $key history-substring-search-down
-      unset key
-
       # Private zsh configuration
       [[ -s "$HOME/.zshrc-private" ]] && source "$HOME/.zshrc-private"
 
@@ -85,13 +68,57 @@
       [[ -s "$USER_ZSH_DATA/fzf-preview.zsh" ]] && source $USER_ZSH_DATA/fzf-preview.zsh
 
       # Initialize ZIM
-      source $ZIM_HOME/init.zsh
+      if [[ -s "$ZIM_HOME/init.zsh" ]]; then
+        source "$ZIM_HOME/init.zsh"
+      else
+        autoload -Uz compinit
+        compinit
+      fi
+
+      if (( $+widgets[history-substring-search-up] )); then
+        for key ('^[[A' '^P' $terminfo[kcuu1]) bindkey $key history-substring-search-up
+        for key ('^[[B' '^N' $terminfo[kcud1]) bindkey $key history-substring-search-down
+        bindkey -M vicmd k history-substring-search-up
+        bindkey -M vicmd j history-substring-search-down
+        unset key
+      fi
 
       # Enable Determinate NIX autocomplete
-      eval "$(determinate-nixd completion zsh)"
+      (( $+commands[determinate-nixd] )) && eval "$(determinate-nixd completion zsh)"
 
-      # Activate proto (requires >=proto@0.38.0)
-      eval "$(proto activate zsh)"
+      # Run explicitly after activation; opening a shell never installs tools.
+      dotfiles-setup() (
+        set -e
+        set -o pipefail
+        mkdir -p "$USER_ZSH_SITE_FUNCTIONS" "$HOME/.tmux/plugins" "$ZIM_HOME"
+        if [[ ! -f "$HOME/.tmux/plugins/tpm/tpm" ]]; then
+          git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+        fi
+        if [[ ! -s "$ZIM_HOME/zimfw.zsh" ]]; then
+          local installer
+          installer=$(mktemp)
+          trap 'rm -f -- "$installer"' EXIT
+          curl -fsSL https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh -o "$installer"
+          mv "$installer" "$ZIM_HOME/zimfw.zsh"
+        fi
+        source "$ZIM_HOME/zimfw.zsh" install
+        source "$ZIM_HOME/zimfw.zsh" init -q
+        if (( $+functions[dotfiles-setup-dev] )); then
+          dotfiles-setup-dev
+        fi
+      )
+
+      toolsup() {
+        if (( $+commands[proto] )) && [[ -n "$PROTO_HOME" ]]; then
+          proto upgrade || return
+        fi
+        if [[ -s "$ZIM_HOME/zimfw.zsh" ]]; then
+          source "$ZIM_HOME/zimfw.zsh" update || return
+        fi
+        if [[ -x "$HOME/.tmux/plugins/tpm/bin/update_plugins" ]]; then
+          "$HOME/.tmux/plugins/tpm/bin/update_plugins" all
+        fi
+      }
     '')
   ];
   programs.zsh.profileExtra = ''
@@ -106,9 +133,6 @@
     fi
     export PATH="$USER_BIN_HOME:$PATH"
 
-    # Add proto bins and shims to PATH
-    export PATH="$PROTO_HOME/tools/node/globals/bin:$PROTO_HOME/shims:$PROTO_HOME/bin:$PATH"
-
     # JetBrains Toolbox App
     if [[ "$OSTYPE" == "darwin"* && -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ]]; then
       export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
@@ -121,33 +145,5 @@
       export PATH="$HOME/.opencode/bin:$PATH"
     fi
 
-    # Download proto manager if missing.
-    if [[ ! -d $HOME/.proto ]]; then
-      curl -fsSL https://moonrepo.dev/install/proto.sh | bash
-      $HOME/.proto/bin/proto completions >| $USER_ZSH_SITE_FUNCTIONS/_proto
-    fi
-
-    # Download tmux plugin manager if missing.
-    if [[ ! -f "$HOME/.tmux/plugins/tpm/tpm" ]]; then
-      mkdir -p "$HOME/.tmux/plugins"
-      git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-    fi
-
-    # Download vim/nvim plugin manager if missing.
-    if [[ ! -e $HOME/.local/share/nvim/site/autoload/plug.vim ]]; then
-      curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-          https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    fi
-
-    # Download zimfw plugin manager if missing.
-    if [[ ! -e $ZIM_HOME/zimfw.zsh ]]; then
-      curl -fsSL --create-dirs -o $ZIM_HOME/zimfw.zsh \
-          https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-    fi
-
-    # Install missing modules, and update $ZIM_HOME/init.zsh if missing or outdated.
-    if [[ ! $ZIM_HOME/init.zsh -nt $HOME/.zimrc ]]; then
-      source $ZIM_HOME/zimfw.zsh init -q
-    fi
   '';
 }

@@ -1,24 +1,48 @@
-{...}: {
+{pkgs, ...}: {
   programs.neovim = {
     enable = true;
     # Match the providers in the previously installed pkgs.neovim package.
     withPython3 = false;
     withRuby = false;
-    # Keep vim-plug's plugin/update workflow; Home Manager owns the startup file.
+    # Plugins and parsers update together through flake.lock.
+    plugins = with pkgs.vimPlugins; [
+      nvim-scrollview
+      onedarkpro-nvim
+      lualine-nvim
+      fzf-vim
+      zoxide-vim
+      autoclose-nvim
+      (nvim-treesitter.withPlugins (p:
+        with p; [
+          astro
+          bash
+          comment
+          css
+          dockerfile
+          gitignore
+          graphql
+          html
+          javascript
+          jsdoc
+          json
+          json5
+          lua
+          markdown
+          markdown_inline
+          regex
+          rust
+          svelte
+          toml
+          tsx
+          typescript
+          vala
+          vue
+          vim
+          vimdoc
+          yaml
+        ]))
+    ];
     extraConfig = ''
-      call plug#begin()
-
-      Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
-      Plug 'olimorris/onedarkpro.nvim'
-      Plug 'nvim-lualine/lualine.nvim'
-      Plug 'junegunn/fzf.vim'
-      Plug 'nanotee/zoxide.vim'
-      Plug 'm4xshen/autoclose.nvim'
-
-      Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-
-      call plug#end()
-
       "" Encoding
       set encoding=utf-8
       set fileencoding=utf-8
@@ -86,52 +110,15 @@
         }
       }
 
-      require('nvim-treesitter.config').setup {
-        ensure_installed = {
-          "astro",
-          "bash",
-          "comment",
-          "css",
-          "dockerfile",
-          "gitignore",
-          "graphql",
-          "javascript",
-          "jsdoc",
-          "json",
-          "json5",
-          "lua",
-          "markdown",
-          "regex",
-          "rust",
-          "svelte",
-          "toml",
-          "tsx",
-          "typescript",
-          "vala",
-          "vue",
-          "vim",
-          "yaml"
-        },
-        -- Install languages synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- Automatically install missing parsers when entering buffer
-        auto_install = true,
-
-        highlight = {
-          -- `false` will disable the whole extension
-          enable = true,
-          -- list of language that will be disabled
-          disable = { "" },
-          additional_vim_regex_highlighting = false,
-        },
-
-        indent = {
-          -- dont enable this, messes up python indentation
-          enable = true,
-          disable = {},
-        },
-      }
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(event)
+          local lang = vim.treesitter.language.get_lang(vim.bo[event.buf].filetype)
+          if lang and vim.treesitter.language.add(lang) then
+            vim.treesitter.start(event.buf, lang)
+            vim.bo[event.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
       END
     '';
   };

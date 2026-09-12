@@ -30,7 +30,7 @@
           "Azure/homebrew-functions"
           "hashicorp/tap"
           "anomalyco/tap"
-          "supabase/tap/supabase"
+          "supabase/tap"
         ];
         brews = [
           "xz"
@@ -70,7 +70,7 @@
           "microsoft-outlook"
           "microsoft-teams"
         ];
-        onActivation.cleanup = "zap";
+        onActivation.cleanup = "none";
       };
 
       # MacOS defaults
