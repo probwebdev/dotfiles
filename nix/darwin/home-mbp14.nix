@@ -9,11 +9,6 @@
     ../home-manager/dev.nix
   ];
 
-  home.packages = with pkgs; [
-    git
-    git-lfs
-  ];
-
   home.file = {};
 
   home.sessionVariables = {};

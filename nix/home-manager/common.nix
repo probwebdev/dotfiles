@@ -30,6 +30,8 @@
     fastfetch
     eza
     btop
+    gnupg
+    git-lfs
     lesspipe
   ];
 

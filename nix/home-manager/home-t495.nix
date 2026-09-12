@@ -34,7 +34,4 @@
   # (fixing local issues, settings XDG_DATA_DIRS, etc.)
   targets.genericLinux.enable = true;
   targets.genericLinux.gpu.enable = false;
-
-  # Hack: Don't install git over system pkg
-  #programs.git.package = pkgs.emptyDirectory;
 }

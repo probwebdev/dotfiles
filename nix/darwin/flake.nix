@@ -34,7 +34,6 @@
         ];
         brews = [
           "xz"
-          "gnupg"
           "pinentry-mac"
           "kubernetes-cli"
           "k9s"

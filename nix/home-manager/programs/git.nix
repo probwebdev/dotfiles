@@ -1,7 +1,5 @@
 {...}: {
   programs.git.enable = true;
-  # Preserve the host Git and GPG installations (Homebrew on macOS).
-  programs.git.package = null;
   programs.git.signing = {
     format = "openpgp";
     signByDefault = true;
