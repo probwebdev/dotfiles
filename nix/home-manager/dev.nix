@@ -41,5 +41,7 @@
     nil
     nixd
     alejandra
+    ffmpeg
+    imagemagick
   ];
 }
