@@ -28,20 +28,22 @@
         enable = true;
         taps = [
           "Azure/homebrew-functions"
+          "Azure/kubelogin"
           "hashicorp/tap"
           "anomalyco/tap"
-          "supabase/tap"
         ];
         brews = [
           "xz"
+          { name = "libpq"; link = true; }
           "pinentry-mac"
           "kubernetes-cli"
           "k9s"
+          "herdr"
           "azure-cli"
           "azure-functions-core-tools@4"
+          "Azure/kubelogin/kubelogin"
           "hashicorp/tap/terraform"
           "anomalyco/tap/opencode"
-          "supabase/tap/supabase"
         ];
         casks = [
           "affinity"
@@ -52,6 +54,8 @@
           "claude-code"
           "chatgpt"
           "codex"
+          "copilot-cli"
+          "herdr-app"
           "docker-desktop"
           "devtoys"
           "1password"
@@ -62,6 +66,7 @@
           "discord"
           "telegram"
           "spotify"
+          "libreoffice"
           "visual-studio-code"
           "zed"
           "dotnet-sdk"
@@ -69,7 +74,7 @@
           "microsoft-outlook"
           "microsoft-teams"
         ];
-        onActivation.cleanup = "none";
+        onActivation.cleanup = "zap";
       };
 
       # MacOS defaults
@@ -106,6 +111,14 @@
         enable = true;
         enableRosetta = true;
         user = "${username}";
+        trust = {
+          taps = [
+            "Azure/homebrew-functions"
+            "Azure/kubelogin"
+            "hashicorp/tap"
+            "anomalyco/tap"
+          ];
+        };
       };
 
       home-manager = {

@@ -1,10 +1,8 @@
-{
-  username,
-  ...
-}: {
+{username, ...}: {
   imports = [
     ./common.nix
     ./desktop.nix
+    ./programs/ghostty.nix
   ];
 
   home.username = username;

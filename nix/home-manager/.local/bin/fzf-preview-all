@@ -1,7 +1,7 @@
 #! /usr/bin/env sh
 mime=$(file -bL --mime-type "$1")
 category=${mime%%/*}
-if [[ -d "$1" ]]; then
+if [ -d "$1" ]; then
 	eza --tree --level=2 --color=always --git "$1" | head -200
 else
   case $category in

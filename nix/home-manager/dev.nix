@@ -43,5 +43,9 @@
     alejandra
     ffmpeg
     imagemagick
+    monaspace
+    ibm-plex
+    source-code-pro
+    jetbrains-mono
   ];
 }
